@@ -150,8 +150,7 @@ main {
 .botao-esqueceu {
     display: block;
 
-    margin-top: 20px;
-
+    margin-top: 25px;
     text-align: center;
     text-decoration: none;
 
@@ -221,7 +220,7 @@ main {
     }
 
     .container-login {
-        width: 92%;
+        width: 90%;
         padding: 25px;
     }
 
@@ -279,7 +278,7 @@ main {
     }
 
     .container-login {
-        width: 92%;
+        width: 90%;
         padding: 22px;
         border-radius: 18px;
     }
@@ -352,7 +351,7 @@ main {
     }
 
     .container-login {
-        width: 100%;
+        width: 90%;
         padding: 18px;
         border-radius: 14px;
     }
@@ -411,4 +410,9 @@ main {
         left: -60%;
         bottom: 0;
     }
+}
+
+.botao-esqueceu:hover {
+    text-decoration: underline;
+
 }
