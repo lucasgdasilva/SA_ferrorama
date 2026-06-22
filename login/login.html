@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrainPass | Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="ondas">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#142537" d="M0,100
+       C220,120 440,115 690,95
+       C940,75 1190,70 1440,90
+       L1440,320
+       L0,320
+       Z">
+            </path>
+        </svg>
+    </div>
+
+    <header>
+        <div class="cabecalho flex">
+            <div class="logo flex">
+                <img src="../assets/logo.png" alt="Logo do TrainPass" class="logotipo" width=50px>
+                <p class="titulo">TrainPass</p>
+            </div>
+            <div class="engrenagem">
+    <button id="btn-config" class="btn-config">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+        </svg>
+    </button>
+
+    <div class="menu-config" id="menu-config">
+        <button id="btn-tema">🌙 Modo Escuro</button>
+        <button id="btn-audio">🔊 Mutar</button>
+    </div>
+</div>
+        </div>
+
+    </header>
+    <main>
+        <section class="container-login">
+            <h2>Bem-vindo!</h2>
+            <p>Informe seu e-mail e<br> senha para continuar</p>
+
+            <form action="" class="formulario-login">
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+
+            <a href="" class="botao-esqueceu">Esqueceu sua senha?</a>
+        </section>
+
+        <section class="cadastro">
+
+            <h3>Não tem uma conta?</h3>
+
+            <button>
+                Cadastre-se
+            </button>
+
+        </section>
+
+    </main>
+
+<script>
+const btnConfig = document.getElementById("btn-config");
+const menu = document.getElementById("menu-config");
+
+btnConfig.addEventListener("click", () => {
+    menu.classList.toggle("ativo");
+});
+
+document.addEventListener("click", (e)=>{
+    if(!e.target.closest(".engrenagem")){
+        menu.classList.remove("ativo");
+    }
+});
+
+// ===================
+// MODO CLARO/ESCURO
+// ===================
+
+const btnTema = document.getElementById("btn-tema");
+
+let escuro = true;
+
+btnTema.addEventListener("click", ()=>{
+
+    if(escuro){
+
+        document.documentElement.style.setProperty("--azul-escuro","#ececec");
+        document.documentElement.style.setProperty("--azul-medio","#f8f8f8");
+        document.documentElement.style.setProperty("--azul-claro","#6d7b88");
+        document.documentElement.style.setProperty("--branco","#142537");
+
+        btnTema.textContent = "Modo Claro";
+
+    }else{
+
+        document.documentElement.style.setProperty("--azul-escuro","#142537");
+        document.documentElement.style.setProperty("--azul-medio","#2A4157");
+        document.documentElement.style.setProperty("--azul-claro","#8C9DAC");
+        document.documentElement.style.setProperty("--branco","#FFFFFF");
+
+        btnTema.textContent = "Modo Escuro";
+    }
+
+    escuro = !escuro;
+
+});
+
+// ===================
+// MUTE
+// ===================
+
+const musica = document.getElementById("musica");
+const btnAudio = document.getElementById("btn-audio");
+
+let mutado = false;
+
+btnAudio.addEventListener("click", ()=>{
+
+    if(!musica) return;
+
+    mutado = !mutado;
+    musica.muted = mutado;
+
+    btnAudio.textContent = mutado
+        ? "Ligar Áudio"
+        : "Desligar Áudio";
+
+});
+</script>
+
+</body>
+
+</html>

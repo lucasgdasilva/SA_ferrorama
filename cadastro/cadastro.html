@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrainPass | Login</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="cadastro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -29,32 +29,23 @@
 
     <header>
         <div class="logo flex">
-            <img src="assets/logo.png" alt="Logo do TrainPass" class="logotipo" width=50px>
+            <img src="../assets/logo.png" alt="Logo do TrainPass" class="logotipo" width=50px>
             <p class="titulo">TrainPass</p>
         </div>
     </header>
     <main>
         <section class="container-login">
-            <h2>Bem-vindo!</h2>
-            <p>Informe seu e-mail e<br> senha para continuar</p>
+            <h2>Cadastre-se</h2>
+            <p>Informe seus dados<br> abaixo</p>
 
             <form action="" class="formulario-login">
+                <input type="text" placeholder="Nome completo" required>
                 <input type="email" placeholder="E-mail" required>
+                <input type="text" placeholder="Nome de usuário" required>
                 <input type="password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
+                <input type="password" placeholder="Confirmar senha" required>
+                <button type="submit">Cadastre-se</button>
             </form>
-
-            <a href="" class="botao-esqueceu">Esqueceu sua senha?</a>
-        </section>
-
-        <section class="cadastro">
-
-            <h3>Não tem uma conta?</h3>
-
-            <button>
-                Cadastre-se
-            </button>
-
         </section>
 
     </main>
