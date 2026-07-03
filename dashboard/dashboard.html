@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrainPass | Login</title>
+    <title>TrainPass | Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,51 +20,91 @@
                 <img src="../assets/logo.png" alt="Logo do TrainPass" class="logotipo" width="50px">
                 <p class="titulo">TrainPass</p>
             </div>
-            <div class="notificacoes">
-                <img src="../assets/icone-notificacaoes.svg" alt="Notificações" width="32">
+            <div class="menu flex">
+                <div class="icone-menu notificacoes">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                        class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                    </svg>
+                </div>
+                <div class="icone-menu perfil">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                </div>
             </div>
-            <div class="perfil">
-                <img src="../assets/icone-perfil.svg" alt="Notificações" width="32">
-            </div>
+
         </div>
     </header>
     <main>
         <div class="conteudo flex">
             <div class="barra-nav">
                 <div class="item-barra-nav flex">
-                    <img src="../assets/icone-gerenciar.svg" alt="Gerenciar" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-wrench" viewBox="0 0 16 16">
+                        <path
+                            d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z" />
+                    </svg>
                     <p class="titulo-item">Gerenciar linhas</p>
                 </div>
                 <div class="item-barra-nav flex">
-                    <img src="../assets/icone-gerenciar.svg" alt="Gerenciar" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-wrench" viewBox="0 0 16 16">
+                        <path
+                            d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z" />
+                    </svg>
                     <p class="titulo-item">Gerenciar trens</p>
                 </div>
                 <div class="item-barra-nav flex">
-                    <img src="../assets/icone-alertas.svg" alt="Alertas" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                    </svg>
                     <p class="titulo-item">Alertas</p>
                 </div>
                 <div class="item-barra-nav flex">
-                    <img src="../assets/icone-sensores.svg" alt="Gerenciar" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-broadcast" viewBox="0 0 16 16">
+                        <path
+                            d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
+                    </svg>
                     <p class="titulo-item">Sensores</p>
                 </div>
                 <div class="item-barra-nav flex">
-                    <img src="../assets/icone-relatorios.svg" alt="Gerenciar" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
+                    </svg>
                     <p class="titulo-item">Relatórios</p>
                 </div>
                 <div class="item-barra-nav flex">
-                    <img src="../assets/icone-gerenciar-usuarios.svg" alt="Gerenciar" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                    </svg>
                     <p class="titulo-item">Gerenciar usuários</p>
                 </div>
                 <div class="espaco-config">
-                    <img src="../assets/icone-configuracoes.svg" alt="Gerenciar" width="32">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-gear-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                    </svg>
                 </div>
 
-            </div>         
+            </div>
             <div class="espaco-conteudo">
                 <div class="container-principal">
 
                 </div>
-            </div>   
+            </div>
         </div>
     </main>
 
