@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito Sans", system-ui, sans-serif;
+}
+
+:root {
+    --base-escuro: #142537;
+    --base-medio: #2A4157;
+    --base-claro: #8C9DAC;
+    --branco: #FFFFFF;
+    --detalhes: #263A4E;
+}
+
+.tema-claro {
+    --base-escuro: #524430;
+    --base-medio: #8e7e58;
+    --base-claro: #d4c1a4;
+    --branco: #FFFFFF;
+    --detalhes: #83754b;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: var(--base-medio);
+    opacity: 1;
+    background-image:  radial-gradient(var(--detalhes) 1.7999999999999998px, transparent 1.7999999999999998px), radial-gradient(var(--detalhes) 1.7999999999999998px, var(--base-medio) 1.7999999999999998px);
+    background-size: 24px 24px;
+    background-position: 0 0,12px 12px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--base-escuro);
+    padding: 5px 10px;
+}
+
+.logo {
+    color: var(--branco);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.engrenagem {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+}
+
+.engrenagem svg {
+    fill: var(--branco);
+}
+
+.configuracoes-dropdown {
+    display: inline-block;
+    
+}
+
+.configuracoes-dropdown .opcoes {
+    display: none;
+    position: absolute;
+    min-width: 170px;
+    transform: translateX(-100px);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+}
+
+.configuracoes-dropdown:hover{
+    cursor: pointer;
+}
+
+.configuracoes-dropdown:hover .opcoes {
+    display: block;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.container-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--branco);
+    width: 35%;
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+    padding: 25px 30px;
+}
+
+.cabecalho-login h2 {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.cabecalho-login p {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.cabecalho-login {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 15px;
+    text-align: left;
+    width: 80%;
+    font-size: 1.6rem;
+    padding: 20px 0px;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+#email, #senha {
+    font-size: 1.2rem;
+    padding: 8px 14px;
+    border-radius: 5px;
+    border: 2px solid var(--base-claro);
+    color: var(--base-escuro);
+}
+
+#botao-entrar {
+    background-color: var(--base-escuro);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    transition: 0.2s ease;
+}
+
+#botao-entrar:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
+}
+
+.link-recuperar-senha {
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    font-size: 1.3rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--base-medio);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.link-recuperar-senha:hover {
+    text-decoration: underline;
+}
+
+.cadastrar {
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    font-size: 1.3rem;
+    text-align: center;
+    color: var(--branco);
+}
+
+.cadastrar a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cadastrar a:hover {
+    text-decoration: underline;
+}
+
+.tema {
+    display: flex;
+    gap: 10px;
+    background-color: var(--base-medio);
+    padding: 5px 10px;
+    border: 2px solid var(--base-claro);
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--branco);
+}
+
+#botao-switch {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#botao-switch svg{
+    display: flex;
+    align-self: center;
+    fill: var(--branco);
+}
+
+#botao-switch:hover {
+    cursor: pointer;
+}
+
+#botao-switch svg:last-child {
+    display: none;
+}
+
+.tema-claro #botao-switch svg:first-child {
+    display: none;
+}
+
+.tema-claro #botao-switch svg:last-child {
+    display: block;
+}
