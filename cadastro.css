@@ -186,7 +186,7 @@ header {
 #botao-entrar {
     background-color: var(--base-escuro);
     color: var(--branco);
-    border: none;
+    border: 2px solid var(--base-escuro);
     border-radius: 5px;
     width: 100%;
     margin: 0 auto;
@@ -199,7 +199,9 @@ header {
 
 #botao-entrar:hover {
     cursor: pointer;
+    color: var(--base-escuro);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    background-color: var(--branco);
 }
 
 .link-recuperar-senha {
