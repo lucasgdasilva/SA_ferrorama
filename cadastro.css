@@ -1,0 +1,536 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui, sans-serif;
+}
+
+:root {
+    --base-escuro: #142537;
+    --base-medio: #2A4157;
+    --base-claro: #8C9DAC;
+    --branco: #FFFFFF;
+    --detalhes: #263A4E;
+    --verde: #45d361;
+    --vermelho: #dd7171;
+}
+
+.tema-claro {
+    --base-escuro: #524430;
+    --base-medio: #8e7e58;
+    --base-claro: #d4c1a4;
+    --branco: #FFFFFF;
+    --detalhes: #83754b;
+    --verde: #45d361;
+    --vermelho: #dd7171;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: var(--base-medio);
+    opacity: 1;
+    background-image:
+        radial-gradient(
+            var(--detalhes) 1.8px,
+            transparent 1.8px
+        ),
+        radial-gradient(
+            var(--detalhes) 1.8px,
+            var(--base-medio) 1.8px
+        );
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: var(--base-escuro);
+    padding: 5px 10px;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    color: var(--branco);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+    font-weight: 600;
+}
+
+.engrenagem {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    flex-shrink: 0;
+}
+
+.engrenagem svg {
+    fill: var(--branco);
+}
+
+.configuracoes-dropdown {
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.configuracoes-dropdown .opcoes {
+    display: none;
+    position: absolute;
+    min-width: 170px;
+    transform: translateX(-100px);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.configuracoes-dropdown:hover {
+    cursor: pointer;
+}
+
+.configuracoes-dropdown:hover .opcoes {
+    display: block;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    min-height: calc(100vh - 80px);
+}
+
+.container-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--branco);
+    width: clamp(400px, 45vw, 530px);
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    padding: 25px 30px;
+}
+
+.cabecalho-login h2 {
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.cabecalho-login p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.cabecalho-login {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 15px;
+    text-align: left;
+    width: 80%;
+    font-size: 1.6rem;
+    padding: 20px 0px;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+#email,
+#senha,
+#nome,
+#usuario {
+    font-weight: 500;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    padding: 8px 14px;
+    border-radius: 5px;
+    border: 2px solid var(--base-claro);
+    color: var(--base-escuro);
+}
+
+#email:focus,
+#senha:focus,
+#nome:focus,
+#usuario:focus {
+    outline: none;
+    border: 2px solid var(--base-escuro);
+}
+
+#email:valid,
+#senha:valid {
+    outline: none;
+    border: 2px solid var(--verde);
+}
+
+#botao-entrar {
+    background-color: var(--base-escuro);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-weight: 600;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease;
+}
+
+#botao-entrar:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.link-recuperar-senha {
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    text-align: center;
+    text-decoration: none;
+    color: var(--base-escuro);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.link-recuperar-senha:hover {
+    text-decoration: underline;
+}
+
+.retornar {
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    text-align: center;
+    color: var(--branco);
+    margin-bottom: 1em;
+}
+
+.retornar a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.retornar a:hover {
+    text-decoration: underline;
+}
+
+.tema {
+    display: flex;
+    gap: 10px;
+    background-color: var(--base-medio);
+    padding: 5px 10px;
+    border: 2px solid var(--base-claro);
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--branco);
+}
+
+#botao-switch {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#botao-switch svg {
+    display: flex;
+    align-self: center;
+    fill: var(--branco);
+}
+
+#botao-switch:hover {
+    cursor: pointer;
+}
+
+#botao-switch svg:last-child {
+    display: none;
+}
+
+.tema-claro #botao-switch svg:first-child {
+    display: none;
+}
+
+.tema-claro #botao-switch svg:last-child {
+    display: block;
+}
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+    header {
+        padding: 6px 12px;
+    }
+
+    .logo {
+        gap: 9px;
+        padding: 14px 20px;
+        font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    }
+
+    .engrenagem {
+        padding: 14px 20px;
+    }
+
+    .engrenagem svg {
+        width: clamp(28px, 3.5vw, 34px);
+        height: clamp(28px, 3.5vw, 34px);
+    }
+
+    .login {
+        gap: 45px;
+    }
+
+    .container-login {
+        width: clamp(600px, 70vw, 800px);
+        max-width: calc(100% - 80px);
+        margin-top: 30px;
+        padding: 30px 35px;
+    }
+
+    .cabecalho-login,
+    .formulario-login {
+        width: 85%;
+    }
+
+    .cabecalho-login {
+        gap: 18px;
+        padding: 25px 0;
+    }
+
+    .cabecalho-login h2 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    .cabecalho-login p {
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        line-height: 1.2;
+    }
+
+    .formulario-login {
+        gap: 18px;
+        margin: 25px auto;
+    }
+
+    #email,
+    #senha {
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        padding: 10px 14px;
+    }
+
+    #botao-entrar {
+        padding: 12px;
+        font-size: clamp(1.15rem, 2vw, 1.4rem);
+    }
+
+    .link-recuperar-senha,
+    .retornar {
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    }
+
+    .link-recuperar-senha {
+        padding: 20px;
+    }
+
+    .configuracoes-dropdown {
+        position: relative;
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .configuracoes-dropdown .opcoes {
+        min-width: 180px;
+        right: 0;
+        left: auto;
+        transform: none;
+    }
+
+    .configuracoes-dropdown:focus-within .opcoes {
+        display: block;
+    }
+
+    .tema p {
+        font-size: clamp(0.5rem, 4vw, 1.1rem);
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 4px 8px;
+        align-items: center;
+    }
+
+    .logo {
+        gap: 7px;
+        padding: 10px 12px;
+        font-size: clamp(1rem, 4vw, 1.15rem);
+    }
+
+    .engrenagem {
+        padding: 10px 12px;
+        align-items: center;
+    }
+
+    .engrenagem svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .login {
+        gap: 30px;
+    }
+
+    .container-login {
+        width: calc(100% - 48px);
+        min-width: 0;
+        max-width: none;
+        margin-top: 20px;
+        padding: 20px 15px;
+    }
+
+    .cabecalho-login,
+    .formulario-login {
+        width: 90%;
+    }
+
+    .cabecalho-login {
+        gap: 12px;
+        padding: 18px 0;
+    }
+
+    .cabecalho-login h2 {
+        font-size: clamp(1.7rem, 7vw, 2rem);
+    }
+
+    .cabecalho-login p {
+        font-size: clamp(0.95rem, 4vw, 1.05rem);
+        line-height: 1.2;
+    }
+
+    .formulario-login {
+        gap: 15px;
+        margin: 18px auto;
+    }
+
+    #email,
+    #senha {
+        font-size: clamp(0.9rem, 3.8vw, 1rem);
+        padding: 8px 12px;
+    }
+
+    #botao-entrar {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        padding: 10px;
+    }
+
+    .link-recuperar-senha,
+    .retornar {
+        font-size: clamp(0.95rem, 3.8vw, 1.05rem);
+    }
+
+    .configuracoes-dropdown {
+        position: relative;
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .configuracoes-dropdown .opcoes {
+        min-width: 170px;
+        right: 0;
+        left: auto;
+        transform: none;
+    }
+
+    .configuracoes-dropdown:focus-within .opcoes {
+        display: block;
+    }
+
+    .tema p {
+        font-size: clamp(0.5rem, 4vw, 0.8rem);
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 3px 5px;
+    }
+
+    .logo {
+        gap: 5px;
+        padding: 9px 7px;
+        font-size: 1rem;
+    }
+
+    .engrenagem {
+        padding: 9px 7px;
+    }
+
+    .engrenagem svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .container-login {
+        width: calc(100% - 40px);
+        padding: 18px 12px;
+    }
+
+    .cabecalho-login,
+    .formulario-login {
+        width: 92%;
+    }
+
+    .cabecalho-login h2 {
+        font-size: clamp(1.5rem, 7vw, 1.8rem);
+    }
+
+    .cabecalho-login p {
+        font-size: clamp(0.9rem, 4vw, 1rem);
+    }
+
+    #email,
+    #senha {
+        font-size: clamp(0.85rem, 3.8vw, 0.95rem);
+        padding: 8px 10px;
+    }
+
+    #botao-entrar {
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
+    }
+
+    .link-recuperar-senha,
+    .retornar {
+        font-size: clamp(0.9rem, 3.8vw, 1rem);
+    }
+
+    .configuracoes-dropdown .opcoes {
+        min-width: 160px;
+        right: 0;
+        transform: none;
+    }
+
+    .tema p {
+        font-size: clamp(0.5rem, 4vw, 0.8rem);
+    }
+}

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login.css"/>
+    <link rel="stylesheet" href="cadastro.css"/>
     <script type="text/javascript" src="trocar-tema.js" defer></script>
     </head>
 
@@ -32,23 +32,26 @@
                 </div>
             </div>
         </div>
+        
     </header>
     <main>
         <section class="login">
             <div class="container-login">
                 <div class="cabecalho-login">
-                    <h2>Bem-vindo!</h2>
-                    <p>Informe seu e-mail e senha para continuar.</p>
+                    <h2>Cadastre-se</h2>
+                    <p>Informe seus dados abaixo.</p>
                 </div>
                 <div class="formulario-login">
+                     <input type="text" id="nome" placeholder="Nome completo" required />
                     <input type="email" id="email" placeholder="E-mail" required />
+                    <input type="text" id="usuario" placeholder="Nome de usuário" required />
                     <input type="password" id="senha" placeholder="Senha" required />
-                    <button type="submit" id="botao-entrar" onclick="location.href='dashboard.html'">Entrar</button>
+                    <input type="password" id="senha" placeholder="Confirmar senha" required />
+                    <button type="submit" id="botao-entrar">Cadastrar</button>
                 </div>
-                <a href="recuperar-senha.html" class="link-recuperar-senha">Esqueceu sua senha?</a>
             </div>
-            <div class="cadastrar">
-                <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+            <div class="retornar">
+                <a href="login.html">Voltar ao login</a></p>
             </div>
         </section>
     </main>
