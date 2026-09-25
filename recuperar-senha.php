@@ -41,10 +41,17 @@
                     <p>Não se preocupe.</p>
                     <p>Informe seu e-mail abaixo e enviaremos um código de verificação.</p>
                 </div>
-                <div class="formulario-login">
-                    <input type="email" id="email" placeholder="E-mail" required />
+                <?php if (isset($_GET['status'])): ?>
+                    <?php if ($_GET['status'] === 'credenciais'): ?>
+                        <p class="aviso">
+                            E-mail inválido.
+                        </p>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <form action="processar-recuperacao.php" method="POST" class="formulario-login">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required />
                     <button type="submit" id="botao-entrar">Enviar</button>
-                </div>
+                </form>
             </div>
             <div class="retornar">
                 <a href="login.php">Voltar ao login</a></p>
