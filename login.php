@@ -70,7 +70,7 @@
                     <input type="password" id="senha" name="senha" placeholder="Senha" required />
                     <button type="submit" id="botao-entrar">Entrar</button>
                 </form>
-                <a href="recuperar-senha.html" class="link-recuperar-senha">Esqueceu sua senha?</a>
+                <a href="recuperar-senha.php" class="link-recuperar-senha">Esqueceu sua senha?</a>
             </div>
             <div class="cadastrar">
                 <p>Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>

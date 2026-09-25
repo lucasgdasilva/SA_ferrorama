@@ -12,7 +12,7 @@
     --branco: #FFFFFF;
     --detalhes: #263A4E;
     --verde: #45d361;
-    --vermelho: #dd7171;
+    --vermelho: #e96a6a;
 }
 
 .tema-claro {
@@ -22,7 +22,7 @@
     --branco: #FFFFFF;
     --detalhes: #83754b;
     --verde: #45d361;
-    --vermelho: #e26c6c;
+    --vermelho: #e96a6a;
 }
 
 ::-webkit-scrollbar {
