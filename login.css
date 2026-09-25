@@ -319,7 +319,8 @@ header {
     }
 
     .cabecalho-login,
-    .formulario-login {
+    .formulario-login,
+    .aviso {
         width: 85%;
     }
 
@@ -384,7 +385,7 @@ header {
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 481px) and (max-width: 600px) {
 
     header {
         padding: 4px 8px;
@@ -420,7 +421,8 @@ header {
     }
 
     .cabecalho-login,
-    .formulario-login {
+    .formulario-login,
+    .aviso {
         width: 90%;
     }
 
@@ -508,7 +510,8 @@ header {
     }
 
     .cabecalho-login,
-    .formulario-login {
+    .formulario-login, 
+    .aviso {
         width: 92%;
     }
 
