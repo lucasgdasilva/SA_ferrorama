@@ -22,7 +22,7 @@
     --branco: #FFFFFF;
     --detalhes: #83754b;
     --verde: #45d361;
-    --vermelho: #dd7171;
+    --vermelho: #e26c6c;
 }
 
 ::-webkit-scrollbar {
@@ -160,7 +160,8 @@ header {
 #email,
 #senha,
 #nome,
-#usuario {
+#usuario,
+#confirmar-senha {
     font-weight: 500;
     font-size: clamp(0.95rem, 1.3vw, 1.1rem);
     padding: 8px 14px;
@@ -172,13 +173,15 @@ header {
 #email:focus,
 #senha:focus,
 #nome:focus,
-#usuario:focus {
+#usuario:focus,
+#confirmar-senha:focus {
     outline: none;
     border: 2px solid var(--base-escuro);
 }
 
 #email:valid,
-#senha:valid {
+#senha:valid, 
+#confirmar-senha:valid {
     outline: none;
     border: 2px solid var(--verde);
 }
@@ -189,7 +192,7 @@ header {
     border: 2px solid var(--base-escuro);
     border-radius: 5px;
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 10px;
     font-size: clamp(1.1rem, 1.5vw, 1.3rem);
     font-weight: 600;
@@ -277,7 +280,16 @@ header {
     display: block;
 }
 
-@media (min-width: 601px) and (max-width: 1100px) {
+.aviso {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    font-weight: bold;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    color: var(--vermelho);
+}
+
+@media (min-width: 481px) and (max-width: 1100px) {
 
     header {
         padding: 6px 12px;
@@ -310,7 +322,8 @@ header {
     }
 
     .cabecalho-login,
-    .formulario-login {
+    .formulario-login,
+    .aviso {
         width: 85%;
     }
 
@@ -375,7 +388,7 @@ header {
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) and (max-width: 600px) {
 
     header {
         padding: 4px 8px;
@@ -499,7 +512,8 @@ header {
     }
 
     .cabecalho-login,
-    .formulario-login {
+    .formulario-login,
+    .aviso {
         width: 92%;
     }
 
