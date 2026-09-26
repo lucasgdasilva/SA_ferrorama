@@ -15,15 +15,14 @@ if (!isset($_SESSION['usuario_id'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TrainPass | Dashboard</title>
+    <title>TrainPass | Perfil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="perfil.css" />
     <script type="text/javascript" src="trocar-tema.js" defer></script>
-    <script src="dashboard.js" defer></script>
 </head>
 
 <body>
@@ -79,77 +78,62 @@ if (!isset($_SESSION['usuario_id'])) {
                 </a>
             </div>
         </div>
-
-
     </header>
     <main>
-        <div class="conteudo flex">
-            <div class="barra-nav">
-                <div class="item-barra-nav flex" id="linhas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-wrench" viewBox="0 0 16 16">
-                        <path
-                            d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z" />
-                    </svg>
-                    <p class="titulo-item">Gerenciar linhas</p>
+        <div class="espaco-conteudo">
+            <div class="container">
+                <div class="info-perfil flex">
+                    <img src="assets/perfil-default.png" alt="Foto de perfil" width="120px" height="120px"
+                        class="foto-perfil" />
+                    <div class="detalhes-perfil">
+                        <h2><?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>
+                        <p>Email: <?= htmlspecialchars($_SESSION['usuario_email']) ?></p>
+                        <p>Cargo: <?= htmlspecialchars($_SESSION['usuario_cargo']) ?></p>
+                    </div>
                 </div>
-                <div class="item-barra-nav flex" id="trens">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-wrench" viewBox="0 0 16 16">
-                        <path
-                            d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z" />
-                    </svg>
-                    <p class="titulo-item">Gerenciar trens</p>
-                </div>
-                <div class="item-barra-nav flex" id="alertas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                    </svg>
-                    <p class="titulo-item">Alertas</p>
-                </div>
-                <div class="item-barra-nav flex" id="sensores">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-broadcast" viewBox="0 0 16 16">
-                        <path
-                            d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
-                    </svg>
-                    <p class="titulo-item">Sensores</p>
-                </div>
-                <div class="item-barra-nav flex" id="relatorios">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
-                    </svg>
-                    <p class="titulo-item">Relatórios</p>
-                </div>
-                <div class="item-barra-nav flex" id="usuarios">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-people-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                    </svg>
-                    <p class="titulo-item">Gerenciar usuários</p>
-                </div>
-                <div class="espaco-config">
-                    <div class="opcoes-config">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                <div class="opcoes-cards">
+                    <div class="card" id="info-conta">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                        </svg>
+                        <h3>Informações da Conta</h3>
+                        <p>Valide e atualize suas informações pessoais.</p>
+                    </div>
+                    <div class="card" id="configuracoes">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-gear-fill" viewBox="0 0 16 16">
                             <path
                                 d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
                         </svg>
+                        <h3>Configurações</h3>
+                        <p>Personalize suas definições e preferências.</p>
                     </div>
+                    <div class="card" id="redefinir-senha">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-key-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                        </svg>
+                        <h3>Redefinir Senha</h3>
+                        <p>Altere sua senha para manter sua conta segura.</p>
+                    </div>
+                    <a class="card" id="sair" href="logout.php">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path
+                                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+                        </svg>
+                        <h3>Sair</h3>
+                        <p>Encerre sua sessão</p>
+                    </a>
                 </div>
-            </div>
-            <div class="espaco-conteudo">
-                <div class="container-principal">
-                    
+                <div class="voltar">
+                    <button onclick="window.location.href='dashboard.php'" id="botao-voltar">Voltar</button>
                 </div>
             </div>
         </div>
     </main>
 </body>
-
-</html>

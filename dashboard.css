@@ -80,6 +80,7 @@ header {
     padding: 15px 25px;
     font-size: clamp(1.05rem, 1.5vw, 1.5rem);
     font-weight: 600;
+    text-decoration: none;
 }
 
 .engrenagem, .icone-notif, .icone-perfil {
@@ -87,10 +88,17 @@ header {
     align-items: center;
     padding: 15px;
     flex-shrink: 0;
+    transition: 0.3s ease;
 }
 
 .engrenagem svg, .icone-notif svg, .icone-perfil svg {
     fill: var(--branco);
+}
+
+.icone-notif:hover, .icone-perfil:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease;
 }
 
 .configuracoes-dropdown {

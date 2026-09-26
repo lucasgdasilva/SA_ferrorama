@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui, sans-serif;
+}
+
+:root {
+    --base-escuro: #142537;
+    --base-medio: #2A4157;
+    --base-claro: #8C9DAC;
+    --branco: #FFFFFF;
+    --detalhes: #263A4E;
+    --verde: #45d361;
+    --vermelho: #e54545;
+}
+
+.tema-claro {
+    --base-escuro: #524430;
+    --base-medio: #8e7e58;
+    --base-claro: #d4c1a4;
+    --branco: #FFFFFF;
+    --detalhes: #83754b;
+    --verde: #45d361;
+    --vermelho: #e54545;
+}
+
+.flex {
+    display: flex;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: var(--base-medio);
+    opacity: 1;
+    background-image:
+        radial-gradient(
+            var(--detalhes) 1.8px,
+            transparent 1.8px
+        ),
+        radial-gradient(
+            var(--detalhes) 1.8px,
+            var(--base-medio) 1.8px
+        );
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: var(--base-escuro);
+    padding: 5px 10px;
+    position: sticky;
+    top: 0;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    height: 90vh;
+}
+
+.opcoes-header {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.logo {
+    color: var(--branco);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.engrenagem, .icone-notif, .icone-perfil {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    flex-shrink: 0;
+    transition: 0.3s ease;
+}
+
+.engrenagem svg, .icone-notif svg, .icone-perfil svg {
+    fill: var(--branco);
+}
+
+.icone-notif:hover, .icone-perfil:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}
+
+.configuracoes-dropdown {
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.configuracoes-dropdown .opcoes {
+    display: none;
+    position: absolute;
+    min-width: 170px;
+    transform: translateX(-100px);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.configuracoes-dropdown:hover {
+    cursor: pointer;
+}
+
+.configuracoes-dropdown:hover .opcoes {
+    display: block;
+}
+
+.tema {
+    display: flex;
+    gap: 10px;
+    background-color: var(--base-medio);
+    padding: 5px 10px;
+    border: 2px solid var(--base-claro);
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--branco);
+}
+
+#botao-switch {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#botao-switch svg {
+    display: flex;
+    align-self: center;
+    fill: var(--branco);
+}
+
+#botao-switch:hover {
+    cursor: pointer;
+}
+
+#botao-switch svg:last-child {
+    display: none;
+}
+
+.tema-claro #botao-switch svg:first-child {
+    display: none;
+}
+
+.tema-claro #botao-switch svg:last-child {
+    display: block;
+}
+
+.espaco-conteudo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: fit-content;
+    gap: 2rem;
+    background-color: var(--branco);
+    border-radius: 7px;
+    padding: 20px 0px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.opcoes-cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--branco);
+    gap: 1.1rem;
+    border-radius: 5px;
+    padding: 35px 25px;
+    border: 3px solid var(--base-escuro);
+    background-color: var(--base-escuro);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+}
+
+.card svg {
+    fill: var(--branco);
+    width: 40%;
+    height: auto;
+    transition: 0.3s ease;
+}
+
+.card a {
+    font-weight: bold;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--branco);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+}
+
+.card:hover svg {
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}
+
+#sair {
+    background-color: var(--vermelho);
+    border: 3px solid var(--vermelho);
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+#sair h3 {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: bold;
+}
+
+#sair:hover {
+    background-color: var(--branco);
+    color: var(--vermelho);
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px 0px rgba(247, 10, 10, 0.7);
+    transition: 0.3s ease;
+}
+
+#sair:hover a {
+    color: var(--vermelho);
+    transition: 0.3s ease;
+}
+
+#sair:hover svg {
+    fill: var(--vermelho);
+    transition: 0.3s ease;
+}
+
+.info-perfil {
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 20px 0px;
+}
+
+.info-perfil h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: bold;
+}
+
+.info-perfil p {
+    font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+}
+
+#botao-voltar {
+    background-color: var(--base-escuro);
+    color: var(--branco);
+    border: 2px solid var(--base-escuro);
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 10px 40px;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-weight: 600;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease;
+}
+
+#botao-voltar:hover {
+    cursor: pointer;
+    color: var(--base-escuro);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    background-color: var(--branco);
+}
