@@ -55,27 +55,13 @@
                     <p>Informe seu e-mail e senha para continuar.</p>
                 </div>
                 <?php if (isset($_GET['status'])): ?>
-
                     <?php if ($_GET['status'] === 'credenciais'): ?>
-
-                        <p class="aviso">
-                            E-mail ou senha incorretos.
-                        </p>
-
+                        <p class="aviso">E-mail ou senha incorretos.</p>
                     <?php elseif ($_GET['status'] === 'cadastro_sucesso'): ?>
-
-                        <p class="aviso" id="sucesso">
-                            Cadastro realizado com sucesso! Agora faça login.
-                        </p>
-
+                        <p class="aviso" id="sucesso">Cadastro realizado com sucesso! Agora faça login.</p>
                     <?php elseif ($_GET['status'] === 'senha_alterada'): ?>
-
-                        <p class="aviso" id="sucesso">
-                            Senha alterada com sucesso! Agora faça login.
-                        </p>
-
+                        <p class="aviso" id="sucesso">Senha alterada com sucesso! Agora faça login.</p>
                     <?php endif; ?>
-
                 <?php endif; ?>
                 <form action="processar-login.php" method="POST" class="formulario-login">
                     <input type="email" id="email" name="email" placeholder="E-mail" required />

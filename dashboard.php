@@ -79,8 +79,6 @@ if (!isset($_SESSION['usuario_id'])) {
                 </a>
             </div>
         </div>
-
-
     </header>
     <main>
         <div class="conteudo flex">
