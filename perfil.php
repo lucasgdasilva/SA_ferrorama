@@ -111,7 +111,7 @@ if (!isset($_SESSION['usuario_id'])) {
                         <h3>Configurações</h3>
                         <p>Personalize suas definições e preferências.</p>
                     </div>
-                    <div class="card" id="redefinir-senha">
+                    <a class="card" id="redefinir-senha" href="redefinir-senha.php">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-key-fill" viewBox="0 0 16 16">
                             <path
@@ -119,7 +119,7 @@ if (!isset($_SESSION['usuario_id'])) {
                         </svg>
                         <h3>Redefinir Senha</h3>
                         <p>Altere sua senha para manter sua conta segura.</p>
-                    </div>
+                    </a>
                     <a class="card" id="sair" href="logout.php">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e3e3e3">

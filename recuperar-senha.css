@@ -12,7 +12,7 @@
     --branco: #FFFFFF;
     --detalhes: #263A4E;
     --verde: #45d361;
-    --vermelho: #dd7171;
+    --vermelho: #e54545;
 }
 
 .tema-claro {
@@ -22,7 +22,7 @@
     --branco: #FFFFFF;
     --detalhes: #83754b;
     --verde: #45d361;
-    --vermelho: #dd7171;
+    --vermelho: #e54545;
 }
 
 ::-webkit-scrollbar {
@@ -157,7 +157,7 @@ header {
     margin: 20px auto;
 }
 
-#email {
+#email, #codigo, #senha, #confirmar_senha {
     font-weight: 500;
     font-size: clamp(0.95rem, 1.3vw, 1.1rem);
     padding: 8px 14px;
@@ -166,12 +166,12 @@ header {
     color: var(--base-escuro);
 }
 
-#email:focus {
+#email:focus, #codigo:focus, #senha:focus, #confirmar_senha:focus {
     outline: none;
     border: 2px solid var(--base-escuro);
 }
 
-#email:valid {
+#email:valid, #codigo:valid, #senha:valid, #confirmar_senha:valid {
     outline: none;
     border: 2px solid var(--verde);
 }
@@ -268,6 +268,19 @@ header {
 
 .tema-claro #botao-switch svg:last-child {
     display: block;
+}
+
+.aviso {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    font-weight: bold;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    color: var(--vermelho);
+}
+
+#sucesso {
+    color: var(--verde);
 }
 
 @media (min-width: 601px) and (max-width: 1100px) {

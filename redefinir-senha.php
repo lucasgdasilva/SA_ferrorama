@@ -1,94 +1,210 @@
+<?php
+
+session_start();
+
+require_once "config/conexao.php";
+
+
+// ==========================================
+// VERIFICA SE O USUÁRIO PODE ACESSAR A TELA
+// ==========================================
+
+$usuarioId = $_SESSION['usuario_id'] ?? null;
+
+
+// Caso esteja acessando através da recuperação de senha
+if (
+    !$usuarioId &&
+    isset($_SESSION['recuperacao_id']) &&
+    isset($_SESSION['codigo_verificado']) &&
+    $_SESSION['codigo_verificado'] === true
+) {
+    $usuarioId = $_SESSION['recuperacao_id'];
+}
+
+
+// Se não estiver logado e não tiver
+// passado pela recuperação de senha
+if (!$usuarioId) {
+    header("Location: login.php");
+    exit;
+}
+
+
+// Busca o nome do usuário
+$stmt = $conexao->prepare(
+    "SELECT nome
+     FROM usuarios
+     WHERE id = ?
+     LIMIT 1"
+);
+
+$stmt->bind_param("i", $usuarioId);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$usuario = $resultado->fetch_assoc();
+
+
+// Se o usuário não existir
+if (!$usuario) {
+    header("Location: login.php");
+    exit;
+}
+
+?>
+
 <!doctype html>
+
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TrainPass | Login</title>
+
+    <title>TrainPass | Redefinir Senha</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="login.css" />
+
+    <link rel="stylesheet" href="recuperar-senha.css" />
+
     <script type="text/javascript" src="trocar-tema.js" defer></script>
+
 </head>
 
 <body>
+
     <header>
+
         <div class="logo">
+
             <img src="assets/logo.png" alt="Logo do TrainPass" width="36px" height="36px" />
+
             <p>TrainPass</p>
+
         </div>
+
+
         <div class="configuracoes-dropdown">
+
             <div class="engrenagem">
+
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                     class="bi bi-gear-fill" viewBox="0 0 16 16">
                     <path
                         d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
                 </svg>
+
             </div>
+
+
             <div class="opcoes">
+
                 <div class="tema">
+
                     <p>Tema claro</p>
+
                     <button id="botao-switch">
+
                         <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px"
                             fill="#e3e3e3">
                             <path
                                 d="M280-240q-100 0-170-70T40-480q0-100 70-170t170-70h400q100 0 170 70t70 170q0 100-70 170t-170 70H280Zm0-80h400q66 0 113-47t47-113q0-66-47-113t-113-47H280q-66 0-113 47t-47 113q0 66 47 113t113 47Zm85-75q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35Zm115-85Z" />
                         </svg>
+
                         <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px"
                             fill="#e3e3e3">
                             <path
                                 d="M280-240q-100 0-170-70T40-480q0-100 70-170t170-70h400q100 0 170 70t70 170q0 100-70 170t-170 70H280Zm0-80h400q66 0 113-47t47-113q0-66-47-113t-113-47H280q-66 0-113 47t-47 113q0 66 47 113t113 47Zm485-75q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35Zm-285-85Z" />
                         </svg>
+
                     </button>
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
+
+
     <main>
+
         <section class="login">
+
             <div class="container-login">
+
                 <div class="cabecalho-login">
-                    <h2>Bem-vindo!</h2>
-                    <p>Informe seu e-mail e senha para continuar.</p>
+
+                    <h2>Redefinir senha</h2>
+
+                    <p>
+                        Olá, <?= htmlspecialchars($usuario['nome']) ?>.
+                    </p>
+
+                    <p>
+                        Digite sua nova senha abaixo.
+                    </p>
+
                 </div>
+
+
                 <?php if (isset($_GET['status'])): ?>
 
-                    <?php if ($_GET['status'] === 'credenciais'): ?>
+                    <?php if ($_GET['status'] === 'senhas_diferentes'): ?>
 
                         <p class="aviso">
-                            E-mail ou senha incorretos.
+                            As senhas não coincidem.
                         </p>
 
-                    <?php elseif ($_GET['status'] === 'cadastro_sucesso'): ?>
+                    <?php elseif ($_GET['status'] === 'erro'): ?>
 
-                        <p class="aviso" id="sucesso">
-                            Cadastro realizado com sucesso! Agora faça login.
-                        </p>
-
-                    <?php elseif ($_GET['status'] === 'senha_alterada'): ?>
-
-                        <p class="aviso" id="sucesso">
-                            Senha alterada com sucesso! Agora faça login.
+                        <p class="aviso">
+                            Não foi possível alterar sua senha.
                         </p>
 
                     <?php endif; ?>
 
                 <?php endif; ?>
-                <form action="processar-login.php" method="POST" class="formulario-login">
-                    <input type="email" id="email" name="email" placeholder="E-mail" required />
-                    <input type="password" id="senha" name="senha" placeholder="Senha" required />
-                    <button type="submit" id="botao-entrar">Entrar</button>
+
+
+                <form action="processar-redefinicao.php" method="POST" class="formulario-login">
+
+                    <input type="password" id="senha" name="senha" placeholder="Nova senha" required />
+
+                    <input type="password" id="confirmar_senha" name="confirmar_senha"
+                        placeholder="Confirmar nova senha" required />
+
+                    <button type="submit" id="botao-entrar">
+                        Redefinir senha
+                    </button>
+
                 </form>
-                <a href="recuperar-senha.php" class="link-recuperar-senha">Esqueceu sua senha?</a>
+
             </div>
-            <div class="cadastrar">
-                <p>Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
+
+
+            <div class="retornar">
+
+                <a href="login.php">
+                    Voltar ao login
+                </a>
+
             </div>
+
         </section>
+
     </main>
+
 </body>
 
 </html>
