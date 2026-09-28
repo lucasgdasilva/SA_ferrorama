@@ -147,6 +147,7 @@ header {
     width: 80%;
     font-size: 1.6rem;
     padding: 20px 0px;
+    overflow-wrap: break-word;
 }
 
 .formulario-login {

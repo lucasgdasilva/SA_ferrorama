@@ -10,5 +10,5 @@ CREATE TABLE usuarios (
     cargo VARCHAR(50) NOT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     codigo_recuperacao VARCHAR(255) NULL,
-    codigo_expira_em DATETIME NULL;
+    codigo_expira_em DATETIME NULL
 );
