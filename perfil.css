@@ -199,6 +199,13 @@ main {
     gap: 1.5rem;
 }
 
+.foto-perfil {
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border: 3px solid var(--base-escuro);
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -310,4 +317,17 @@ main {
     color: var(--base-escuro);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
     background-color: var(--branco);
+}
+
+.aviso {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    font-weight: bold;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    color: var(--vermelho);
+}
+
+#sucesso {
+    color: var(--verde);
 }

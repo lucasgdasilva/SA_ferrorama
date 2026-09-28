@@ -7,6 +7,26 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
+require_once "config/conexao.php";
+
+$usuario_id = $_SESSION['usuario_id'];
+
+$sql = "SELECT foto FROM usuarios WHERE id = ?";
+
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$usuario = $resultado->fetch_assoc();
+
+if (!$usuario) {
+    die("Usuário não encontrado.");
+}
+
+$foto = !empty($usuario['foto'])
+    ? $usuario['foto']
+    : 'assets/perfil-default.png';
 ?>
 
 <!doctype html>
@@ -83,7 +103,7 @@ if (!isset($_SESSION['usuario_id'])) {
         <div class="espaco-conteudo">
             <div class="container">
                 <div class="info-perfil flex">
-                    <img src="assets/perfil-default.png" alt="Foto de perfil" width="120px" height="120px"
+                    <img src="<?= htmlspecialchars($foto) ?>" alt="Foto de perfil" width="120px" height="120px"
                         class="foto-perfil" />
                     <div class="detalhes-perfil">
                         <h2><?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>

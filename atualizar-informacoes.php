@@ -7,7 +7,7 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
-require_once "conexao.php";
+require_once "config/conexao.php";
 
 $usuario_id = $_SESSION['usuario_id'];
 
@@ -22,11 +22,17 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("E-mail inválido.");
 }
 
-$sql = "SELECT foto FROM usuarios
-        WHERE usuario_id = ?";
+$sql = "SELECT foto
+        FROM usuarios
+        WHERE id = ?";
 
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $usuario_id);
+
+$stmt->bind_param(
+    "i",
+    $usuario_id
+);
+
 $stmt->execute();
 
 $resultado = $stmt->get_result();
@@ -36,7 +42,12 @@ if (!$usuario) {
     die("Usuário não encontrado.");
 }
 
-$foto = $usuario['foto'];
+$fotoAntiga = $usuario['foto'];
+
+$foto = $fotoAntiga;
+
+$novaFoto = false;
+
 
 if (
     isset($_FILES['foto']) &&
@@ -51,7 +62,9 @@ if (
         die("A foto deve ter no máximo 5 MB.");
     }
 
-    $imagem = getimagesize($_FILES['foto']['tmp_name']);
+    $imagem = getimagesize(
+        $_FILES['foto']['tmp_name']
+    );
 
     if ($imagem === false) {
         die("O arquivo enviado não é uma imagem válida.");
@@ -75,26 +88,28 @@ if (
         mkdir($pasta, 0755, true);
     }
 
-    $nomeArquivo = bin2hex(random_bytes(16))
-        . "." . $tiposPermitidos[$tipo];
+    $nomeArquivo = bin2hex(
+        random_bytes(16)
+    ) . "." . $tiposPermitidos[$tipo];
+
 
     $caminhoCompleto = $pasta . $nomeArquivo;
 
-    if (
-        !move_uploaded_file(
-            $_FILES['foto']['tmp_name'],
-            $caminhoCompleto
-        )
-    ) {
+    if (!move_uploaded_file(
+        $_FILES['foto']['tmp_name'],
+        $caminhoCompleto
+    )) {
         die("Não foi possível salvar a foto.");
     }
 
     $foto = "uploads/perfis/" . $nomeArquivo;
+
+    $novaFoto = true;
 }
 
 $sql = "UPDATE usuarios
         SET nome = ?, email = ?, foto = ?
-        WHERE usuario_id = ?";
+        WHERE id = ?";
 
 $stmt = $conexao->prepare($sql);
 
@@ -106,14 +121,61 @@ $stmt->bind_param(
     $usuario_id
 );
 
-if ($stmt->execute()) {
+
+try {
+
+    $stmt->execute();
 
     $_SESSION['usuario_nome'] = $nome;
+    $_SESSION['usuario_email'] = $email;
 
-    header("Location: informacoes-conta.php");
+
+    if ($novaFoto && !empty($fotoAntiga)) {
+
+        $caminhoFotoAntiga = __DIR__ . "/" . $fotoAntiga;
+
+        if (file_exists($caminhoFotoAntiga)) {
+            unlink($caminhoFotoAntiga);
+        }
+    }
+
+
+    header(
+        "Location: informacoes-conta.php?status=sucesso"
+    );
+
     exit;
 
-} else {
+
+} catch (mysqli_sql_exception $erro) {
+
+    if ($erro->getCode() === 1062) {
+
+        if ($novaFoto && !empty($foto)) {
+
+            $caminhoNovaFoto = __DIR__ . "/" . $foto;
+
+            if (file_exists($caminhoNovaFoto)) {
+                unlink($caminhoNovaFoto);
+            }
+        }
+
+        header(
+            "Location: informacoes-conta.php?status=email_existente"
+        );
+
+        exit;
+    }
+
+    if ($novaFoto && !empty($foto)) {
+
+        $caminhoNovaFoto = __DIR__ . "/" . $foto;
+
+        if (file_exists($caminhoNovaFoto)) {
+            unlink($caminhoNovaFoto);
+        }
+    }
+
     die("Erro ao atualizar as informações.");
 }
 

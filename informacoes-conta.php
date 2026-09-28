@@ -102,14 +102,25 @@ if (!$usuario) {
         <div class="espaco-conteudo">
             <div class="container">
                 <h2>Olá, <?= htmlspecialchars($usuario['nome']) ?></h2>
+                <?php if (isset($_GET['status'])): ?>
+                    <?php if ($_GET['status'] === 'sucesso'): ?>
+                        <p class="aviso" id="sucesso">Informações atualizadas com sucesso!</p>
+                    <?php elseif ($_GET['status'] === 'email_existente'): ?>
+                        <p class="aviso">Este e-mail já está sendo usado por outro usuário.</p>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <form action="atualizar-informacoes.php" method="POST" enctype="multipart/form-data" class="formulario">
                     <div class="foto-container">
                         <img src="<?= htmlspecialchars(
-                            $usuario['foto'] ?? 'assets/perfil-padrao.png'
-                        ) ?>" alt="Foto de perfil" id="foto-atual" />
+                            $usuario['foto'] ?? 'assets/perfil-default.png'
+                        ) ?>" alt="Foto de perfil" id="foto-atual" width="64px" />
                         <label for="foto-perfil">Alterar foto</label>
                         <input type="file" id="foto-perfil" name="foto" accept="image/jpeg,image/png,image/webp" />
                     </div>
+                    <button type="submit" name="remover_foto" value="1" formaction="remover-foto.php"
+                        onclick="return confirm('Deseja realmente remover sua foto de perfil?')">
+                        Remover foto
+                    </button>
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>"
                         required />
