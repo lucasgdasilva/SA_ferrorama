@@ -7,6 +7,25 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
+require_once "config/conexao.php";
+
+$usuario_id = $_SESSION['usuario_id'];
+
+$sql = "SELECT nome, email, foto
+        FROM usuarios
+        WHERE id = ?";
+
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$usuario = $resultado->fetch_assoc();
+
+if (!$usuario) {
+    die("Usuário não encontrado.");
+}
+
 ?>
 
 <!doctype html>
@@ -82,57 +101,23 @@ if (!isset($_SESSION['usuario_id'])) {
     <main>
         <div class="espaco-conteudo">
             <div class="container">
-                <div class="info-perfil flex">
-                    <img src="assets/perfil-default.png" alt="Foto de perfil" width="120px" height="120px"
-                        class="foto-perfil" />
-                    <div class="detalhes-perfil">
-                        <h2><?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>
-                        <p>Email: <?= htmlspecialchars($_SESSION['usuario_email']) ?></p>
-                        <p>Cargo: <?= htmlspecialchars($_SESSION['usuario_cargo']) ?></p>
+                <h2>Olá, <?= htmlspecialchars($usuario['nome']) ?></h2>
+                <form action="atualizar-informacoes.php" method="POST" enctype="multipart/form-data" class="formulario">
+                    <div class="foto-container">
+                        <img src="<?= htmlspecialchars(
+                            $usuario['foto'] ?? 'assets/perfil-padrao.png'
+                        ) ?>" alt="Foto de perfil" id="foto-atual" />
+                        <label for="foto-perfil">Alterar foto</label>
+                        <input type="file" id="foto-perfil" name="foto" accept="image/jpeg,image/png,image/webp" />
                     </div>
-                </div>
-                <div class="opcoes-cards">
-                    <a class="card" id="info-conta" href="informacoes-conta.php">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                            <path fill-rule="evenodd"
-                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                        </svg>
-                        <h3>Informações da Conta</h3>
-                        <p>Valide e atualize suas informações pessoais.</p>
-                    </a>
-                    <div class="card" id="configuracoes">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-gear-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                        </svg>
-                        <h3>Configurações</h3>
-                        <p>Personalize suas definições e preferências.</p>
-                    </div>
-                    <a class="card" id="redefinir-senha" href="redefinir-senha.php">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-key-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                        </svg>
-                        <h3>Redefinir Senha</h3>
-                        <p>Altere sua senha para manter sua conta segura.</p>
-                    </a>
-                    <a class="card" id="sair" href="logout.php">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#e3e3e3">
-                            <path
-                                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
-                        </svg>
-                        <h3>Sair</h3>
-                        <p>Encerre sua sessão</p>
-                    </a>
-                </div>
-                <div class="voltar">
-                    <button onclick="window.location.href='dashboard.php'" id="botao-voltar">Voltar</button>
-                </div>
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>"
+                        required />
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>"
+                        required />
+                    <button type="submit" id="botao-entrar">Atualizar Informações</button>
+                </form>
             </div>
         </div>
     </main>
