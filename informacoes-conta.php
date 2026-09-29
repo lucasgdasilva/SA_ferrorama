@@ -40,7 +40,7 @@ if (!$usuario) {
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="perfil.css" />
+    <link rel="stylesheet" href="informacoes-conta.css" />
     <script type="text/javascript" src="trocar-tema.js" defer></script>
 </head>
 
@@ -101,7 +101,7 @@ if (!$usuario) {
     <main>
         <div class="espaco-conteudo">
             <div class="container">
-                <h2>Olá, <?= htmlspecialchars($usuario['nome']) ?></h2>
+                <h2 class="titulo">Editar informações da conta</h2>
                 <?php if (isset($_GET['status'])): ?>
                     <?php if ($_GET['status'] === 'sucesso'): ?>
                         <p class="aviso" id="sucesso">Informações atualizadas com sucesso!</p>
@@ -110,26 +110,65 @@ if (!$usuario) {
                     <?php endif; ?>
                 <?php endif; ?>
                 <form action="atualizar-informacoes.php" method="POST" enctype="multipart/form-data" class="formulario">
-                    <div class="foto-container">
-                        <img src="<?= htmlspecialchars(
-                            $usuario['foto'] ?? 'assets/perfil-default.png'
-                        ) ?>" alt="Foto de perfil" id="foto-atual" width="64px" />
-                        <label for="foto-perfil">Alterar foto</label>
-                        <input type="file" id="foto-perfil" name="foto" accept="image/jpeg,image/png,image/webp" />
+                    <p>Foto de perfil</p>
+                    <div class="espaco-foto">
+                        <div class="foto-container">
+                            <img src="<?= htmlspecialchars(
+                                $usuario['foto'] ?? 'assets/perfil-default.png'
+                            ) ?>" alt="Foto de perfil" id="foto-atual" width="72px" />
+                        </div>
+                        <div class="opcoes-foto">
+                            <label for="foto-perfil" class="botao" id="selecionar-foto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-upload" viewBox="0 0 16 16">
+                                    <path
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                                    <path
+                                        d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z" />
+                                </svg>
+                                <p>Enviar foto</p>
+                            </label>
+                            <input type="file" id="foto-perfil" name="foto" accept="image/jpeg,image/png,image/webp" />
+                            <button type="submit" name="remover_foto" value="1" formaction="remover-foto.php"
+                                onclick="return confirm('Deseja realmente remover sua foto de perfil?')" class="botao"
+                                id="remover">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+                                </svg>
+                                <p>Remover foto</p>
+                            </button>
+                        </div>
                     </div>
-                    <button type="submit" name="remover_foto" value="1" formaction="remover-foto.php"
-                        onclick="return confirm('Deseja realmente remover sua foto de perfil?')">
-                        Remover foto
-                    </button>
+
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>"
                         required />
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>"
                         required />
-                    <button type="submit" id="botao-entrar">Atualizar Informações</button>
+                    <button type="submit" class="botao" id="atualizar">Atualizar Informações</button>
                 </form>
+            </div>
+             <div class="retornar">
+                <a href="perfil.php">Voltar</a>
             </div>
         </div>
     </main>
+    <script>
+    const inputFoto = document.getElementById("foto-perfil");
+    const fotoAtual = document.getElementById("foto-atual");
+
+    inputFoto.addEventListener("change", function () {
+
+        if (inputFoto.files.length === 0) {
+            return;
+        }
+
+        const arquivo = inputFoto.files[0];
+        const url = URL.createObjectURL(arquivo);
+        fotoAtual.src = url;
+    });
+</script>
 </body>

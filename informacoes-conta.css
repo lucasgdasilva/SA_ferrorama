@@ -37,6 +37,7 @@ body {
 
 body {
     background-color: var(--base-medio);
+    opacity: 1;
     background-image:
         radial-gradient(
             var(--detalhes) 1.8px,
@@ -52,28 +53,36 @@ body {
 
 header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
     background-color: var(--base-escuro);
     padding: 5px 10px;
     position: sticky;
     top: 0;
 }
 
-.logo {
+main {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 25px;
-    color: var(--branco);
-    font-size: clamp(1.05rem, 1.5vw, 1.5rem);
-    font-weight: 600;
-    text-decoration: none;
+    flex: 1;
+    height: 90vh;
 }
 
 .opcoes-header {
     display: flex;
     gap: 0.5rem;
+}
+
+.logo {
+    color: var(--branco);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+    font-weight: 600;
+    text-decoration: none;
 }
 
 .engrenagem,
@@ -96,15 +105,12 @@ header {
 .icone-perfil:hover {
     cursor: pointer;
     transform: scale(1.1);
+    transition: 0.3s ease;
 }
 
 .configuracoes-dropdown {
     display: inline-block;
     flex-shrink: 0;
-}
-
-.configuracoes-dropdown:hover {
-    cursor: pointer;
 }
 
 .configuracoes-dropdown .opcoes {
@@ -115,6 +121,10 @@ header {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
+.configuracoes-dropdown:hover {
+    cursor: pointer;
+}
+
 .configuracoes-dropdown:hover .opcoes {
     display: block;
 }
@@ -122,14 +132,14 @@ header {
 .tema {
     display: flex;
     gap: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 10px;
     background-color: var(--base-medio);
+    padding: 5px 10px;
     border: 2px solid var(--base-claro);
     border-radius: 5px;
-    color: var(--branco);
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--branco);
 }
 
 #botao-switch {
@@ -138,14 +148,14 @@ header {
     padding: 5px;
 }
 
-#botao-switch:hover {
-    cursor: pointer;
-}
-
 #botao-switch svg {
     display: flex;
     align-self: center;
     fill: var(--branco);
+}
+
+#botao-switch:hover {
+    cursor: pointer;
 }
 
 #botao-switch svg:last-child {
@@ -160,13 +170,10 @@ header {
     display: block;
 }
 
-main {
-    display: flex;
-    flex: 1;
-    height: 90vh;
-}
-
 .espaco-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -179,123 +186,175 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 60%;
     height: fit-content;
-    gap: 2rem;
-    padding: 25px 30px;
     background-color: var(--branco);
     border-radius: 7px;
+    margin-top: 1rem;
+    padding: 25px 30px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
-.info-perfil {
-    display: flex;
-    width: 90%;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+.aviso {
+    width: 60%;
+    text-align: left;
     margin: 0 auto;
-    padding: 20px 0;
-}
-
-.foto-perfil {
-    border-radius: 50%;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    border: 3px solid var(--base-escuro);
-}
-
-.info-perfil h2 {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    padding-top: 10px;
     font-weight: bold;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    color: var(--vermelho);
 }
 
-.info-perfil p {
-    font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+#sucesso {
+    color: var(--verde);
 }
 
-.opcoes-cards {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.card {
+.formulario {
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 1.1rem;
-    padding: 35px 25px;
+    padding-top: 10px;
+    gap: 0.5rem;
+}
 
-    color: var(--branco);
-    text-align: center;
-    text-decoration: none;
-
-    background-color: var(--base-escuro);
+#foto-atual {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
     border: 3px solid var(--base-escuro);
+}
+
+.opcoes-foto {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#nome,
+#email {
+    font-weight: 500;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    padding: 8px 14px;
     border-radius: 5px;
-
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
-
-    transition: 0.3s ease;
+    border: 2px solid var(--base-claro);
+    color: var(--base-escuro);
 }
 
-.card svg {
-    width: 40%;
-    height: auto;
-    fill: var(--branco);
-    transition: 0.3s ease;
+#email:focus,
+#nome:focus {
+    outline: none;
+    border: 2px solid var(--base-escuro);
 }
 
-.card:hover {
-    cursor: pointer;
-    transform: scale(1.03);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.7);
-}
-
-.card:hover svg {
-    transform: scale(1.1);
-}
-
-#sair {
-    background-color: var(--vermelho);
-    border: 3px solid var(--vermelho);
-}
-
-#sair h3 {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    font-weight: bold;
-}
-
-#sair:hover {
-    background-color: var(--branco);
-    color: var(--vermelho);
-    box-shadow: 0px 0px 15px 0px rgba(247, 10, 10, 0.7);
-}
-
-#sair:hover svg {
-    fill: var(--vermelho);
-}
-
-#botao-voltar {
+.botao {
     background-color: var(--base-escuro);
     color: var(--branco);
     border: 2px solid var(--base-escuro);
     border-radius: 5px;
+    width: 100%;
     margin: 10px auto;
-    padding: 10px 40px;
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    padding: 10px;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
     font-weight: 600;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
     transition: 0.2s ease;
 }
 
-#botao-voltar:hover {
+.botao:hover {
     cursor: pointer;
     color: var(--base-escuro);
-    background-color: var(--branco);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    background-color: var(--branco);
+}
+
+#foto-perfil {
+    display: none;
+}
+
+.foto-container {
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+}
+
+.espaco-foto {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#remover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    background-color: var(--vermelho);
+    border: 2px solid var(--vermelho);
+}
+
+#remover:hover {
+    cursor: pointer;
+    color: var(--vermelho);
+    box-shadow: 0px 0px 10px 0px rgba(247, 10, 10, 0.7);
+    background-color: var(--branco);
+}
+
+#atualizar {
+    font-size: clamp(1rem, 1.4vw, 1.3em);
+    margin: 1rem auto; 
+}
+
+#selecionar-foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+#selecionar-foto p {
+    font-weight: 600;
+}
+
+.titulo {
+    width: 60%;
+    text-align: left;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: bold;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+form p,
+form label {
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: bold;
+}
+
+label {
+    margin-top: 0.3rem;
+}
+
+.retornar {
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    text-align: center;
+    color: var(--branco);
+    margin-bottom: 1em;
+}
+
+.retornar a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.retornar a:hover {
+    text-decoration: underline;
 }

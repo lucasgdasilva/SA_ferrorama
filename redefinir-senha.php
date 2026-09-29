@@ -112,7 +112,7 @@ if (!$usuario) {
                 </form>
             </div>
             <div class="retornar">
-                <a href="login.php">Voltar ao login</a>
+                <a href="dashboard.php">Voltar</a>
             </div>
         </section>
     </main>
