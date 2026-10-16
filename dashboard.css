@@ -25,18 +25,25 @@
     --vermelho: #e54545;
 }
 
-.flex {
-    display: flex;
-}
-
 ::-webkit-scrollbar {
     display: none;
+}
+
+.flex {
+    display: flex;
 }
 
 html,
 body {
     width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -166,7 +173,8 @@ header {
 .conteudo {
     display: flex;
     flex: 1;
-    height: 90vh;
+    min-height: 0;
+    height: calc(100vh - 70px);
 }
 
 .barra-nav {
@@ -223,21 +231,105 @@ header {
 .espaco-conteudo {
     width: 75%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    padding: 3rem 0;
 }
 
 .container-principal {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 90%;
-    height: 90%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    padding: 35px 0;
     background-color: var(--branco);
     border-radius: 7px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    border-bottom: 2px solid var(--base-claro);
+}
+
+.botao-itens {
+    background-color: var(--base-escuro);
+    color: var(--branco);
+    border: 2px solid var(--base-escuro);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    font-weight: 600;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease;
+}
+
+.botao-itens:hover {
+    cursor: pointer;
+    color: var(--base-escuro);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    background-color: var(--branco);
+}
+
+.trem {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.status-ok {
+    background-color: var(--verde);
+    color: var(--preto);
+    font-weight: bold;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+}
+
+.status-parado {
+    background-color: var(--vermelho);
+    color: var(--branco);
+    font-weight: bold;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+}
+
+.status-manutencao {
+    background-color: var(--base-medio);
+    color: var(--branco);
+    font-weight: bold;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+}
+
+.informacoes-linha {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#alerta {
+    padding: 0 7px;
+    border-radius: 30%;
+    text-align: center;
 }
 
 @media (min-width: 601px) and (max-width: 1100px) {
