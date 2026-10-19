@@ -265,12 +265,94 @@ const conteudos = {
 
     sensores: `
         <h1>Sensores</h1>
-        <p>O conteúdo aparecerá aqui</p>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>VEL-032</h3>
+                                <p class="status-ok">OK</p>
+                            </div>
+                            <p>Sensor de velocidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>PROX-068</h3>
+                                <p class="status-ok">OK</p>
+                            </div>
+                            <p>Sensor de proximidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>UMD-027</h3>
+                                <p class="status-parado" id="alerta">!</p>
+                            </div>
+                            <p>Sensor de umidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>VEL-035</h3>
+                                <p class="status-ok">OK</p>
+                            </div>
+                            <p>Sensor de velocidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>PROX-071</h3>
+                                <p class="status-parado" id="alerta">!</p>
+                            </div>
+                            <p>Sensor de proximidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>UMD-030</h3>
+                                <p class="status-ok">OK</p>
+                            </div>
+                            <p>Sensor de umidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="informacoes-linha">
+                            <div class="trem">
+                                <h3>VEL-038</h3>
+                                <p class="status-ok">OK</p>
+                            </div>
+                            <p>Sensor de velocidade</p>
+                        </div>
+                        <button class="botao-itens">
+                            Detalhes
+                        </button>
+                    </div>
     `,
 
     relatorios: `
-        <h1>Relatórios</h1>
-       <p>O conteúdo aparecerá aqui</p>
+        
     `,
 
     usuarios: `

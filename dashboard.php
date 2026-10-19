@@ -143,91 +143,33 @@ if (!isset($_SESSION['usuario_id'])) {
             </div>
             <div class="espaco-conteudo">
                 <div class="container-principal">
-                <h1>Sensores</h1>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>VEL-032</h3>
-                                <p class="status-ok">OK</p>
-                            </div>
-                            <p>Sensor de velocidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
+                    <h1>Relatórios</h1>
+                <div class="cards-relatorios">
+                    <div class="card">
+                        <h2>Trens registrados</h2>
+                        <h3>67</h3>
+                        <p>42 ativos</p>
+                        <a>Ver detalhes</a>
                     </div>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>PROX-068</h3>
-                                <p class="status-ok">OK</p>
-                            </div>
-                            <p>Sensor de proximidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
+                    <div class="card">
+                        <h2>Alertas</h2>
+                        <h3>25</h3>
+                        <p>3 críticos</p>
+                        <a>Ver detalhes</a>
                     </div>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>UMD-027</h3>
-                                <p class="status-parado" id="alerta">!</p>
-                            </div>
-                            <p>Sensor de umidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
+                    <div class="card">
+                        <h2>Linhas cadastradas</h2>
+                        <h3>12</h3>
+                        <p>10 ativas</p>
+                        <a>Ver detalhes</a>
                     </div>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>VEL-035</h3>
-                                <p class="status-ok">OK</p>
-                            </div>
-                            <p>Sensor de velocidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
+                    <div class="card">
+                        <h2>Sensores</h2>
+                        <h3>32</h3>
+                        <p>19 ativos</p>
+                        <a>Ver detalhes</a>
                     </div>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>PROX-071</h3>
-                                <p class="status-parado" id="alerta">!</p>
-                            </div>
-                            <p>Sensor de proximidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
-                    </div>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>UMD-030</h3>
-                                <p class="status-ok">OK</p>
-                            </div>
-                            <p>Sensor de umidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
-                    </div>
-                    <div class="item">
-                        <div class="informacoes-linha">
-                            <div class="trem">
-                                <h3>VEL-038</h3>
-                                <p class="status-ok">OK</p>
-                            </div>
-                            <p>Sensor de velocidade</p>
-                        </div>
-                        <button class="botao-itens">
-                            Detalhes
-                        </button>
-                    </div>
+                </div>
             </div>
         </div>
     </main>
