@@ -347,12 +347,26 @@ header {
     flex-direction: column;
     gap: 0.7rem;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 2rem;
+    transition: 0.2s ease;
+    border: 2px solid var(--branco);
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 15px 0px rgba(19, 20, 63, 0.4);
+    border: 2px solid var(--base-escuro);
+    transition: 0.2s ease;
+}
+
+.card:hover a {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .card h3 {
-    font-size: clamp(2rem, 2.5vw, 2.4rem);
+    font-size: clamp(2.8rem, 3.3vw, 3.2rem);
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
@@ -361,12 +375,13 @@ header {
     text-decoration: none;
     font-weight: 600;
     color: var(--base-escuro);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(1.3rem, 1.7vw, 1.5rem);
 }
 
-.card a:hover {
-    cursor: pointer;
-    text-decoration: underline;
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
 }
 
 @media (min-width: 601px) and (max-width: 1100px) {
