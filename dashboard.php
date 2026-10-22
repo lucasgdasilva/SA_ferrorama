@@ -136,7 +136,18 @@ if (!isset($_SESSION['usuario_id'])) {
                 </div>
             </div>
             <div class="espaco-conteudo">
-                <div class="container-principal"></div>
+                <div class="container-principal">
+                    <section class="tela-inicial">
+                        <h1>Olá, <?= htmlspecialchars($_SESSION['usuario_nome'] ?? 'usuário', ENT_QUOTES, 'UTF-8') ?>!</h1>
+
+                        <div class="instrucoes">
+                            <p>
+                                Utilize a barra de navegação lateral para acessar as funcionalidades
+                                do sistema e gerenciar as informações ferroviárias.
+                            </p>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
     </main>

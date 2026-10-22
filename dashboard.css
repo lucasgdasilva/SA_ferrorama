@@ -244,6 +244,7 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    text-align: center;
     width: 90%;
     height: 100%;
     min-height: 0;
@@ -254,6 +255,40 @@ header {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.instrucoes {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.cabecalho-lista {
+    width: 89%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.cabecalho-lista h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.cabecalho-lista button {
+    position: absolute;
+    right: 0;
+}
+
+.lista-registros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .item {
@@ -280,11 +315,22 @@ header {
     transition: 0.2s ease;
 }
 
+.botao-excluir {
+    background-color: var(--vermelho);
+    border: 2px solid var(--vermelho);
+}
+
 .botao-itens:hover {
     cursor: pointer;
     color: var(--base-escuro);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
     background-color: var(--branco);
+}
+
+.botao-excluir:hover {
+    background-color: var(--branco);
+    color: var(--vermelho);
+    box-shadow: 0px 0px 20px 0px rgba(255, 25, 25, 0.3);
 }
 
 .trem {
@@ -382,6 +428,11 @@ header {
     display: flex;
     align-items: center;
     gap: 0.9rem;
+}
+
+.acoes-item {
+    display: flex;
+    gap: 1rem;
 }
 
 @media (min-width: 601px) and (max-width: 1100px) {
