@@ -435,6 +435,18 @@ header {
     gap: 1rem;
 }
 
+#cadastrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+#cadastrar svg {
+    width: 24px;
+    height: 24px;
+}
+
 @media (min-width: 601px) and (max-width: 1100px) {
 
     header {
