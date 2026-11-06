@@ -402,7 +402,7 @@ header {
     align-items: center;
     width: 100%;
     padding: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 1rem;
 }
 
