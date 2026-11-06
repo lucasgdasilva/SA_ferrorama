@@ -73,3 +73,51 @@ CREATE TABLE IF NOT EXISTS alertas (
         FOREIGN KEY (linha_id) REFERENCES linhas(id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO linhas (id, nome, origem, destino, status) VALUES
+(1, 'L-001', 'Joinville', 'São Francisco do Sul', 'Ativa'),
+(2, 'L-002', 'Joinville', 'Araquari', 'Ativa'),
+(3, 'L-003', 'Joinville', 'Guaramirim', 'Ativa'),
+(4, 'L-004', 'Joinville', 'São Bento do Sul', 'Em manutenção'),
+(5, 'L-005', 'Joinville', 'Campo Alegre', 'Ativa'),
+(6, 'L-006', 'Joinville', 'Rio Negrinho', 'Inativa'),
+(7, 'L-007', 'Joinville', 'Mafra', 'Ativa'),
+(8, 'L-008', 'Joinville', 'Corupá', 'Em manutenção'),
+(9, 'L-009', 'Joinville', 'Curitiba', 'Ativa'),
+(10, 'L-010', 'Guaramirim', 'Jaraguá do Sul', 'Inativa');
+
+INSERT INTO trens (nome, status, linha_id, modelo, tipo) VALUES
+('TP-001', 'Em operação', 1, 'Alstom Metropolis', 'Passageiros'),
+('TP-002', 'Em operação', 2, 'CAF Série 5000', 'Passageiros'),
+('TP-003', 'Em manutenção', 3, 'Siemens Inspiro', 'Passageiros'),
+('TP-004', 'Em operação', 5, 'Alstom Citadis', 'Passageiros'),
+('TP-005', 'Parado', 7, 'CAF Série 6000', 'Passageiros'),
+('TC-001', 'Em operação', 1, 'GE Evolution ES44', 'Carga'),
+('TC-002', 'Em operação', 4, 'EMD SD70ACe', 'Carga'),
+('TC-003', 'Em manutenção', 6, 'GE AC44i', 'Carga'),
+('TC-004', 'Em operação', 9, 'EMD SD40-2', 'Carga'),
+('TC-005', 'Parado', 10, 'GE Dash 9', 'Carga');
+
+INSERT INTO sensores (codigo, tipo, status, linha_id) VALUES
+('VEL-001', 'Sensor de velocidade', 'OK', 1),
+('VEL-002', 'Sensor de velocidade', 'Falha', 2),
+('PROX-001', 'Sensor de proximidade', 'OK', 3),
+('PROX-002', 'Sensor de proximidade', 'Em manutenção', 4),
+('UMID-001', 'Sensor de umidade', 'OK', 5),
+('UMID-002', 'Sensor de umidade', 'Falha', 6),
+('TEMP-001', 'Sensor de temperatura', 'OK', 7),
+('TEMP-002', 'Sensor de temperatura', 'Em manutenção', 8),
+('FALHA-001', 'Sensor de falha', 'OK', 9),
+('FALHA-002', 'Sensor de falha', 'Falha', 10);
+
+INSERT INTO alertas (codigo, descricao, linha_id, status, gravidade) VALUES
+('A-001', 'Velocidade acima do limite permitido', 1, 'Ativo', 'Alta'),
+('A-002', 'Falha de comunicação com sensor', 2, 'Resolvido', 'Média'),
+('A-003', 'Temperatura elevada nos trilhos', 3, 'Ativo', 'Alta'),
+('A-004', 'Manutenção preventiva necessária', 4, 'Ativo', 'Média'),
+('A-005', 'Umidade elevada na via', 5, 'Resolvido', 'Baixa'),
+('A-006', 'Sensor de proximidade sem resposta', 6, 'Ativo', 'Alta'),
+('A-007', 'Vibração acima do padrão esperado', 7, 'Resolvido', 'Média'),
+('A-008', 'Possível obstrução na linha', 8, 'Ativo', 'Alta'),
+('A-009', 'Oscilação na temperatura do equipamento', 9, 'Resolvido', 'Baixa'),
+('A-010', 'Falha detectada no sistema de monitoramento', 10, 'Ativo', 'Alta');

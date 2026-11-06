@@ -72,6 +72,7 @@ header {
     padding: 5px 10px;
     position: sticky;
     top: 0;
+    z-index: 999;
 }
 
 .opcoes-header {
@@ -304,6 +305,9 @@ header {
 }
 
 .botao-itens {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
     background-color: var(--base-escuro);
     color: var(--branco);
     border: 2px solid var(--base-escuro);
@@ -327,6 +331,19 @@ header {
     background-color: var(--branco);
 }
 
+.botao-itens svg {
+    width: 24px;
+    height: 24px;   
+    stroke: var(--branco);
+    stroke-width: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.botao-itens:hover svg {
+    fill: var(--base-escuro);
+}
+
 .botao-excluir:hover {
     background-color: var(--branco);
     color: var(--vermelho);
@@ -341,8 +358,8 @@ header {
 
 .status-ok {
     background-color: var(--verde);
-    color: var(--preto);
-    font-weight: bold;
+    color: var(--branco);
+    font-weight: 600;
     padding: 5px 7px;
     border-radius: 5px;
     font-size: clamp(0.7rem, 1.2vw, 0.9rem);
@@ -351,7 +368,7 @@ header {
 .status-parado {
     background-color: var(--vermelho);
     color: var(--branco);
-    font-weight: bold;
+    font-weight: 600;
     padding: 5px 7px;
     border-radius: 5px;
     font-size: clamp(0.7rem, 1.2vw, 0.9rem);
@@ -360,16 +377,17 @@ header {
 .status-manutencao {
     background-color: var(--base-medio);
     color: var(--branco);
-    font-weight: bold;
+    font-weight: 600;
     padding: 5px 7px;
     border-radius: 5px;
     font-size: clamp(0.7rem, 1.2vw, 0.9rem);
 }
 
-.informacoes-linha {
+.informacoes-item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    text-align: left;
 }
 
 #alerta {
@@ -384,7 +402,7 @@ header {
     align-items: center;
     width: 100%;
     padding: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1rem;
 }
 
@@ -469,6 +487,12 @@ header {
     border-radius: 5px;
     border: 2px solid var(--base-claro);
     font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.acoes-formulario {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
 @media (min-width: 601px) and (max-width: 1100px) {

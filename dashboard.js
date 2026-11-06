@@ -202,7 +202,7 @@ async function renderizarLista(tipo) {
     container.innerHTML = `
         <div class="cabecalho-lista">
             <h1>${config.titulo}</h1>
-            <button type="button" class="botao-itens" data-acao="cadastrar" data-tipo="${tipo}">Cadastrar ${config.singular}</button>
+            <button type="button" class="botao-itens" data-acao="cadastrar" data-tipo="${tipo}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg> Cadastrar ${config.singular}</button>
         </div>
         <div class="lista-registros">${conteudoItens}</div>
     `;
@@ -325,12 +325,12 @@ async function renderizarRelatorios() {
     const tipos = ['trens', 'alertas', 'linhas', 'sensores'];
 
     for (const tipo of tipos) {
-    const carregou = await carregarDadosAPI(tipo);
+        const carregou = await carregarDadosAPI(tipo);
 
-    if (!carregou) {
-        return;
+        if (!carregou) {
+            return;
+        }
     }
-}
 
     const statusAtivos = {
         trens: 'Em operação',
