@@ -506,6 +506,113 @@ header {
     width: 100%;
 }
 
+.cabecalho-relatorio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.grafico-relatorio,
+.grupo-relatorio {
+    width: 90%;
+    background: var(--cor-card, #fff);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.tabelas-relatorio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.grafico-relatorio h2 {
+    margin-bottom: 25px;
+}
+
+.item-grafico {
+    margin-bottom: 20px;
+}
+
+.informacoes-grafico {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.barra-grafico {
+    width: 100%;
+    height: 12px;
+    background: #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.barra-preenchimento {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.barra-preenchimento.status-ok {
+    background: #28a745;
+}
+
+.barra-preenchimento.status-manutencao {
+    background: #e0a800;
+}
+
+.barra-preenchimento.status-parado {
+    background: #dc3545;
+}
+
+.grupo-relatorio h3 {
+    margin-bottom: 15px;
+}
+
+.grupo-relatorio h3 span {
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.tabela-responsiva {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabela-relatorio {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-relatorio th,
+.tabela-relatorio td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-relatorio th {
+    font-weight: 600;
+}
+
+.sem-registros {
+    opacity: 0.7;
+    padding: 10px 0;
+}
+
+.rodape-relatorio {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
 @media (min-width: 601px) and (max-width: 1100px) {
 
     header {

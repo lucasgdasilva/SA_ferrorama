@@ -389,6 +389,7 @@ async function salvarCargoUsuario(indice) {
     }
 }
 
+
 async function renderizarRelatorios() {
     container.innerHTML = conteudos.relatorios;
 
@@ -417,10 +418,184 @@ async function renderizarRelatorios() {
         ).length;
 
         container.querySelector(`[data-total="${tipo}"]`).textContent = total;
-
         container.querySelector(`[data-ativos="${tipo}"]`).textContent = ativos;
     });
 }
+
+function agruparDadosRelatorio(tipo) {
+    let categorias = [];
+
+    if (tipo === 'trens') {
+        categorias = ['Em operação', 'Em manutenção', 'Parado'];
+    } else if (tipo === 'linhas') {
+        categorias = ['Ativa', 'Inativa', 'Em manutenção'];
+    } else if (tipo === 'alertas') {
+        categorias = ['Alta', 'Média', 'Baixa'];
+    }
+
+    let registros = dados[tipo];
+
+    if (tipo === 'alertas') {
+        registros = registros.filter(item => item.status === 'Ativo');
+    }
+
+    const campo = tipo === 'alertas' ? 'gravidade' : 'status';
+
+    return categorias.map(categoria => ({
+        categoria,
+        itens: registros.filter(item => item[campo] === categoria)
+    }));
+}
+
+function renderizarGraficoRelatorio(grupos) {
+    const maiorQuantidade = Math.max(
+        ...grupos.map(grupo => grupo.itens.length),
+        1
+    );
+
+    return `
+        <div class="grafico-relatorio">
+            <h2>Distribuição por categoria</h2>
+
+            ${grupos.map(grupo => {
+                const quantidade = grupo.itens.length;
+                const porcentagem = (quantidade / maiorQuantidade) * 100;
+
+                let classe = classeStatus(grupo.categoria);
+
+                return `
+                    <div class="item-grafico">
+                        <div class="informacoes-grafico">
+                            <span>${escaparHTML(grupo.categoria)}</span>
+                            <strong>${quantidade}</strong>
+                        </div>
+
+                        <div class="barra-grafico">
+                            <div
+                                class="barra-preenchimento ${classe}"
+                                style="width: ${porcentagem}%"
+                            ></div>
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+function renderizarTabelaRelatorio(tipo, grupos) {
+    const configuracoesTabela = {
+        trens: {
+            titulo: 'Trens',
+            colunas: ['Nome', 'Linha', 'Modelo', 'Tipo'],
+            valores: item => [
+                item.nome,
+                item.linha,
+                item.modelo,
+                item.tipo
+            ]
+        },
+
+        linhas: {
+            titulo: 'Linhas',
+            colunas: ['Nome', 'Origem', 'Destino'],
+            valores: item => [
+                item.nome,
+                item.origem,
+                item.destino
+            ]
+        },
+
+        alertas: {
+            titulo: 'Alertas ativos',
+            colunas: ['Código', 'Descrição', 'Linha'],
+            valores: item => [
+                item.codigo,
+                item.descricao,
+                item.linha
+            ]
+        }
+    };
+
+    const config = configuracoesTabela[tipo];
+
+    return `
+        <div class="tabelas-relatorio">
+            ${grupos.map(grupo => `
+                <section class="grupo-relatorio">
+                    <h3>
+                        ${escaparHTML(grupo.categoria)}
+                        <span>(${grupo.itens.length})</span>
+                    </h3>
+
+                    ${grupo.itens.length ? `
+                        <div class="tabela-responsiva">
+                            <table class="tabela-relatorio">
+                                <thead>
+                                    <tr>
+                                        ${config.colunas.map(coluna =>
+                                            `<th>${coluna}</th>`
+                                        ).join('')}
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    ${grupo.itens.map(item => `
+                                        <tr>
+                                            ${config.valores(item).map(valor =>
+                                                `<td>${escaparHTML(valor)}</td>`
+                                            ).join('')}
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    ` : `
+                        <p class="sem-registros">
+                            Nenhum registro nesta categoria.
+                        </p>
+                    `}
+                </section>
+            `).join('')}
+        </div>
+    `;
+}
+
+async function renderizarRelatorioDetalhado(tipo) {
+    const titulos = {
+        trens: 'Relatório de Trens',
+        alertas: 'Relatório de Alertas',
+        linhas: 'Relatório de Linhas'
+    };
+
+    if (!titulos[tipo]) return;
+
+    try {
+        dados[tipo] = await requisitarAPI(tipo);
+    } catch (erro) {
+        alert(erro.message);
+        return;
+    }
+
+    const grupos = agruparDadosRelatorio(tipo);
+
+    container.innerHTML = `
+        <div class="cabecalho-relatorio">
+            <h1>${titulos[tipo]}</h1>
+        </div>
+
+        ${renderizarGraficoRelatorio(grupos)}
+
+        ${renderizarTabelaRelatorio(tipo, grupos)}
+
+        <div class="rodape-relatorio">
+        <button class="botao-itens" data-acao="voltar-relatorios">
+            Voltar
+        </button>
+        </div>
+    `;
+}
+
 
 
 const conteudos = {
@@ -434,7 +609,7 @@ const conteudos = {
                 </div>
                 <h3 data-total="trens">0</h3>
                 <p><span data-ativos="trens">0</span> ativos</p>
-                <a>Ver detalhes ></a>
+                <a href="#" data-acao="ver-relatorio" data-tipo="trens">Ver detalhes &gt;</a>
             </div>
             <div class="card">
                 <div class="titulo">
@@ -445,7 +620,7 @@ const conteudos = {
                 </div>
                 <h3 data-total="alertas">0</h3>
                 <p><span data-ativos="alertas">0</span> ativos</p>
-                <a>Ver detalhes ></a>
+                <a href="#" data-acao="ver-relatorio" data-tipo="alertas">Ver detalhes &gt;</a>
             </div>
             <div class="card">
                 <div class="titulo">
@@ -456,7 +631,7 @@ const conteudos = {
                 </div>
                 <h3 data-total="linhas">0</h3>
                 <p><span data-ativos="linhas">0</span> ativas</p>
-                <a>Ver detalhes ></a>
+                <a href="#" data-acao="ver-relatorio" data-tipo="linhas">Ver detalhes &gt;</a>
             </div>
             <div class="card">
                 <div class="titulo">
@@ -531,8 +706,13 @@ container.addEventListener('click', evento => {
         excluirRegistro(tipo, indice);
     } else if (acao === 'voltar') {
         renderizarLista(tipo);
+    } else if (acao === 'ver-relatorio') {
+        evento.preventDefault();
+        renderizarRelatorioDetalhado(tipo);
+    } else if (acao === 'voltar-relatorios') {
+        renderizarRelatorios();
     } else if (acao === 'salvar-cargo') {
-    salvarCargoUsuario(indice);
+        salvarCargoUsuario(indice);
     }
 });
 
