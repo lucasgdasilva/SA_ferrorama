@@ -29,7 +29,7 @@ Professor: Ewerton Cercal
 5 - Crie o banco de dados trainpass.  
 6 - Importe o arquivo SQL disponibilizado na pasta do projeto.  
 7 - Configura as configurações de conexão com o banco de dados no arquivo de configuração.  
-8 - Acesse o sistema pelo navegador: http://localhost/trainpass/  
+8 - Acesse o sistema pelo navegador: http://localhost/SA_ferrorama/  
 
 3. Usuário de teste
 
