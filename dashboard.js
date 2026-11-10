@@ -13,7 +13,8 @@ const endpointsAPI = {
     linhas: 'api/linhas.php',
     trens: 'api/trens.php',
     sensores: 'api/sensores.php',
-    alertas: 'api/alertas.php'
+    alertas: 'api/alertas.php',
+    usuarios: 'api/usuarios.php'
 };
 
 const tiposAPI = Object.keys(endpointsAPI);
@@ -24,7 +25,8 @@ const dados = {
     trens: [],
     linhas: [],
     alertas: [],
-    sensores: []
+    sensores: [],
+    usuarios: []
 };
 
 const configuracoes = {
@@ -290,7 +292,6 @@ async function excluirRegistro(tipo, indice) {
     }
 }
 
-
 async function tratarEnvioFormulario(formulario) {
     const tipo = formulario.dataset.formulario;
     const config = configuracoes[tipo];
@@ -314,6 +315,75 @@ async function tratarEnvioFormulario(formulario) {
         }
 
         await renderizarLista(tipo);
+    } catch (erro) {
+        alert(erro.message);
+    }
+}
+
+async function renderizarUsuarios() {
+    container.innerHTML = `
+        <div class="cabecalho-lista">
+            <h1>Gerenciar usuários</h1>
+        </div>
+        <div class="lista-registros"><p>Carregando usuários...</p></div>
+    `;
+
+    try {
+        dados.usuarios = await requisitarAPI('usuarios');
+
+        const conteudoUsuarios = dados.usuarios.length
+            ? dados.usuarios.map(usuario => `
+                <div class="item">
+                    <div class="informacoes-item">
+                        <div class="trem">
+                            <h3>${escaparHTML(usuario.nome)}</h3>
+                            <p>${escaparHTML(usuario.cargo)}</p>
+                        </div>
+                        <p>${escaparHTML(usuario.email)}</p>
+                        <p>Cadastro: ${escaparHTML(usuario.criado_em)}</p>
+                    </div>
+                    <div class="acoes-item">
+                        <label class="campo-formulario">
+                            <span>Permissão</span>
+                            <select data-cargo-usuario="${Number(usuario.id)}">
+                                <option value="Operador" ${usuario.cargo.toLowerCase() === 'operador' ? 'selected' : ''}>Operador</option>
+                                <option value="Administrador" ${usuario.cargo.toLowerCase() === 'administrador' ? 'selected' : ''}>Administrador</option>
+                            </select>
+                        </label>
+                        <button type="button" class="botao-itens" data-acao="salvar-cargo" data-indice="${Number(usuario.id)}">Salvar</button>
+                    </div>
+                </div>
+            `).join('')
+            : '<p>Nenhum usuário cadastrado.</p>';
+
+        container.innerHTML = `
+            <div class="cabecalho-lista">
+                <h1>Gerenciar usuários</h1>
+            </div>
+            <div class="lista-registros">${conteudoUsuarios}</div>
+        `;
+    } catch (erro) {
+        container.innerHTML = `
+            <div class="cabecalho-lista">
+                <h1>Gerenciar usuários</h1>
+            </div>
+            <p>${escaparHTML(erro.message)}</p>
+        `;
+    }
+}
+
+async function salvarCargoUsuario(indice) {
+    const seletor = container.querySelector(`[data-cargo-usuario="${indice}"]`);
+    if (!seletor) return;
+
+    try {
+        await requisitarAPI('usuarios', 'PUT', {
+            id: Number(indice),
+            cargo: seletor.value
+        });
+
+        alert('Permissão do usuário atualizada com sucesso.');
+        await renderizarUsuarios();
     } catch (erro) {
         alert(erro.message);
     }
@@ -400,13 +470,28 @@ const conteudos = {
                 <a>Ver detalhes ></a>
             </div>
         </div>
-    `,
-
-    usuarios: `
-        <h1>Gerenciar usuários</h1>
-        <p>O conteúdo aparecerá aqui</p>
     `
 };
+
+async function verificarAcessoUsuarios() {
+    const itemUsuarios = document.querySelector('#usuarios');
+
+    if (!itemUsuarios) return;
+
+    itemUsuarios.hidden = true;
+
+    try {
+        const resposta = await fetch('api/usuarios.php?verificar=1');
+
+        if (resposta.ok) {
+            itemUsuarios.hidden = false;
+        }
+    } catch {
+        itemUsuarios.hidden = true;
+    }
+}
+
+verificarAcessoUsuarios();
 
 // Navegação principal do dashboard.
 document.querySelectorAll('.item-barra-nav').forEach(item => {
@@ -424,7 +509,7 @@ document.querySelectorAll('.item-barra-nav').forEach(item => {
         }
 
         if (id === 'usuarios') {
-            container.innerHTML = conteudos.usuarios;
+            renderizarUsuarios();
         }
     });
 });
@@ -446,6 +531,8 @@ container.addEventListener('click', evento => {
         excluirRegistro(tipo, indice);
     } else if (acao === 'voltar') {
         renderizarLista(tipo);
+    } else if (acao === 'salvar-cargo') {
+    salvarCargoUsuario(indice);
     }
 });
 
