@@ -319,9 +319,25 @@ header {
     transition: 0.2s ease;
 }
 
+.botao-exportar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: var(--base-escuro);
+    color: var(--branco);
+    border: 2px solid var(--base-escuro);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    font-weight: 600;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease;
+}
+
 .botao-excluir {
     background-color: var(--vermelho);
     border: 2px solid var(--vermelho);
+    transition: 0.2s ease;
 }
 
 .botao-itens:hover {
@@ -329,6 +345,15 @@ header {
     color: var(--base-escuro);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
     background-color: var(--branco);
+    transition: 0.2s ease;
+}
+
+.botao-exportar:hover {
+    cursor: pointer;
+    color: var(--base-escuro);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    background-color: var(--branco);
+    transition: 0.2s ease;
 }
 
 .botao-itens svg {
@@ -338,16 +363,28 @@ header {
     stroke-width: 1px;
     display: flex;
     align-items: center;
+    transition: 0.2s ease;
 }
 
-.botao-itens:hover svg {
+.botao-itens:hover svg, .botao-exportar:hover svg {
     fill: var(--base-escuro);
+    transition: 0.2s ease;
+}
+
+.botao-exportar svg {
+    width: 24px;
+    height: 24px;   
+    fill: var(--branco);
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease;
 }
 
 .botao-excluir:hover {
     background-color: var(--branco);
     color: var(--vermelho);
     box-shadow: 0px 0px 20px 0px rgba(255, 25, 25, 0.3);
+    transition: 0.2s ease;
 }
 
 .trem {
@@ -507,6 +544,7 @@ header {
 }
 
 .cabecalho-relatorio {
+    width: 87%;
     display: flex;
     align-items: center;
     justify-content: space-between;

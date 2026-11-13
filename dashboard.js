@@ -561,6 +561,59 @@ function renderizarTabelaRelatorio(tipo, grupos) {
     `;
 }
 
+function exportarRelatorioCSV(tipo) {
+    const grupos = container.querySelectorAll('.grupo-relatorio');
+    const linhasCSV = [];
+    let quantidadeRegistros = 0;
+
+    grupos.forEach(grupo => {
+        const titulo = grupo.querySelector('h3')?.innerText.trim();
+        const tabela = grupo.querySelector('.tabela-relatorio');
+
+        if (!tabela) return;
+
+        linhasCSV.push(`"${titulo.replace(/"/g, '""')}"`);
+
+        tabela.querySelectorAll('tr').forEach(linha => {
+            const valores = Array.from(
+                linha.querySelectorAll('th, td')
+            ).map(celula =>
+                `"${celula.innerText.trim().replace(/"/g, '""')}"`
+            );
+
+            if (linha.querySelector('td')) {
+                quantidadeRegistros++;
+            }
+
+            linhasCSV.push(valores.join(';'));
+        });
+
+        linhasCSV.push('');
+    });
+
+    if (quantidadeRegistros === 0) {
+        alert('Não há dados para exportar.');
+        return;
+    }
+
+    const arquivo = new Blob(
+        ['\uFEFF' + linhasCSV.join('\r\n')],
+        { type: 'text/csv;charset=utf-8;' }
+    );
+
+    const url = URL.createObjectURL(arquivo);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = `relatorio-${tipo}.csv`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
+
 async function renderizarRelatorioDetalhado(tipo) {
     const titulos = {
         trens: 'Relatório de Trens',
@@ -582,6 +635,16 @@ async function renderizarRelatorioDetalhado(tipo) {
     container.innerHTML = `
         <div class="cabecalho-relatorio">
             <h1>${titulos[tipo]}</h1>
+
+            <button
+                type="button"
+                class="botao-exportar"
+                data-acao="exportar-csv"
+                data-tipo="${tipo}"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16"><path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1m-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0"/></svg>
+                Exportar CSV
+            </button>
         </div>
 
         ${renderizarGraficoRelatorio(grupos)}
@@ -589,14 +652,15 @@ async function renderizarRelatorioDetalhado(tipo) {
         ${renderizarTabelaRelatorio(tipo, grupos)}
 
         <div class="rodape-relatorio">
-        <button class="botao-itens" data-acao="voltar-relatorios">
-            Voltar
-        </button>
+            <button
+                class="botao-itens"
+                data-acao="voltar-relatorios"
+            >
+                Voltar
+            </button>
         </div>
     `;
 }
-
-
 
 const conteudos = {
     relatorios: `
@@ -709,6 +773,8 @@ container.addEventListener('click', evento => {
     } else if (acao === 'ver-relatorio') {
         evento.preventDefault();
         renderizarRelatorioDetalhado(tipo);
+    }  else if (acao === 'exportar-csv') {
+        exportarRelatorioCSV(tipo);
     } else if (acao === 'voltar-relatorios') {
         renderizarRelatorios();
     } else if (acao === 'salvar-cargo') {
