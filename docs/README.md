@@ -84,17 +84,17 @@ Mesmo com auxílio da IA, todas as alterações foram avaliadas pela equipe, que
 
 Nenhuma implementação foi feita pela IA sem que antes passasse por revisão e autorização prévia da equipe. Nós mantivemos backups seguros de versões funcionais em caso de alguma adição feita por IA dar errado.
 
-![Print da tela](blob/main/prints/print1.png)
+![Print da tela](../prints/print1.png)
 
-![Print da tela](prints/print2.png)
+![Print da tela](../prints/print2.png)
 
-![Print da tela](prints/print3.png)
+![Print da tela](../prints/print3.png)
 
-![Print da tela](prints/print4.png)
+![Print da tela](../prints/print4.png)
 
-![Print da tela](prints/print5.png)
+![Print da tela](../prints/print5.png)
 
-![Print da tela](prints/print6.png)
+![Print da tela](../prints/print6.png)
 
 
 
