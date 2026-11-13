@@ -23,12 +23,19 @@ Professor: Ewerton Cercal
 2.2. Passo a passo da instalação
 
 1 - Baixe ou clone o repositório.  
+
 2 - Abra a pasta do projeto dentro de "htdocs", na instalação do XAMPP.  
+
 3 - Abra o XAMPP e inicie o Apache e o MySQL.  
+
 4 - Acesse o phpMyAdmin pelo navegador. (localhost/phpmyadmin).
+
 5 - Importe o arquivo SQL disponibilizado na pasta do projeto (database/trainpass.sql).  
+
 6 - Execute o código SQL no phpMyAdmin para criar o banco.
+
 7 - Tenha certeza de que as conexões com o banco de dados estão sendo feitas corretamente pelos arquivos de conexão PHP. 
+
 8 - Acesse o sistema pelo navegador: http://localhost/trainpass/  
 
 3. Usuário de teste
