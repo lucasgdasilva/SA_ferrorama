@@ -73,7 +73,9 @@ Operador - | Login de teste | | Senha de teste |
 
 A inteligência artificial foi uma ferramenta de apoio durante a criação do TrainPass. Ela foi para ajudar a desenvolver funcionalidades, melhorar partes do código, resolver problemas que apareceram e dar ideias para o projeto.
 
-Mesmo com auxílio da IA, todas as alterações foram avaliadas pela equipe, que ficou responsável por escolher o que seria utilizado e garantir que o sistema funcionasse como esperado. Nenhuma implementação foi feita pela IA sem que antes passasse por revisão e autorização prévia da equipe. Nós mantivemos backups seguros de versões funcionais em caso de alguma adição feita por IA dar errado.
+Mesmo com auxílio da IA, todas as alterações foram avaliadas pela equipe, que ficou responsável por escolher o que seria utilizado e garantir que o sistema funcionasse como esperado. 
+
+Nenhuma implementação foi feita pela IA sem que antes passasse por revisão e autorização prévia da equipe. Nós mantivemos backups seguros de versões funcionais em caso de alguma adição feita por IA dar errado.
 
 
 
