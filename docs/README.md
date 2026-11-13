@@ -29,7 +29,7 @@ Professor: Ewerton Cercal
 5 - Importe o arquivo SQL disponibilizado na pasta do projeto (database/trainpass.sql).  
 6 - Execute o código SQL no phpMyAdmin para criar o banco.
 7 - Tenha certeza de que as conexões com o banco de dados estão sendo feitas corretamente pelos arquivos de conexão PHP. 
-8 - Acesse o sistema pelo navegador: http://localhost/SA_ferrorama/  
+8 - Acesse o sistema pelo navegador: http://localhost/trainpass/  
 
 3. Usuário de teste
 
@@ -61,7 +61,7 @@ Operador - | Login de teste | | Senha de teste |
 - Criação de uma tela de login, para que o acesso ao sistema seja feito apenas por usuários cadastrados.
 - Utilização de uma identidade visual baseada em tons de azul, para transmitir uma aparência tecnológica e profissional. Bem como uma fonte limpa e legível.
 - Navegação baseada em um dashboard principal dinâmico, para facilitar a navegação e evitar a criação de muitos arquivos separados.
-- Integração com uma API própria que disponibiliza os dados do banco em JSON para serem acessados pelo sistema. (Exemplo: Consulta de dados de trens na API: http://localhost/SA_ferrorama/api/trens.php)
+- Integração com uma API própria que disponibiliza os dados do banco em JSON para serem acessados pelo sistema. (Exemplo: Consulta de dados de trens na API: http://localhost/trainpass/api/trens.php)
 
 6. Limitações conhecidas
 
