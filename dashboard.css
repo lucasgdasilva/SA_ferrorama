@@ -268,7 +268,7 @@ header {
     width: 89%;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
 }
@@ -366,8 +366,9 @@ header {
     transition: 0.2s ease;
 }
 
-.botao-itens:hover svg, .botao-exportar:hover svg {
+.botao-itens:hover svg {
     fill: var(--base-escuro);
+    stroke: var(--base-escuro);
     transition: 0.2s ease;
 }
 
@@ -379,6 +380,12 @@ header {
     align-items: center;
     transition: 0.2s ease;
 }
+
+.botao-exportar:hover svg {
+    fill: var(--base-escuro);
+    transition: 0.2s ease;
+}
+
 
 .botao-excluir:hover {
     background-color: var(--branco);
@@ -506,8 +513,8 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    width: 100%;
-    padding: 2rem;
+    width: 89%;
+    padding: 2rem 0;
     font-size: clamp(1.2rem, 1.6vw, 1.3rem);
 }
 

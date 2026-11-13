@@ -31,7 +31,7 @@ const dados = {
 
 const configuracoes = {
     trens: {
-        titulo: 'Trens',
+        titulo: 'Gerenciar trens',
         singular: 'trem',
         campos: [
             { chave: 'nome', rotulo: 'Nome do trem', tipo: 'text', obrigatorio: true },
@@ -45,7 +45,7 @@ const configuracoes = {
         status: item => item.status
     },
     linhas: {
-        titulo: 'Linhas',
+        titulo: 'Gerenciar linhas',
         singular: 'linha',
         campos: [
             { chave: 'nome', rotulo: 'Nome da linha', tipo: 'text', obrigatorio: true },
@@ -58,7 +58,7 @@ const configuracoes = {
         status: item => item.status
     },
     alertas: {
-        titulo: 'Alertas',
+        titulo: 'Gerenciar alertas',
         singular: 'alerta',
         campos: [
             { chave: 'codigo', rotulo: 'Código do alerta', tipo: 'text', obrigatorio: true },
@@ -72,7 +72,7 @@ const configuracoes = {
         status: item => item.status
     },
     sensores: {
-        titulo: 'Sensores',
+        titulo: 'Gerenciar sensores',
         singular: 'sensor',
         campos: [
             { chave: 'codigo', rotulo: 'Código do sensor', tipo: 'text', obrigatorio: true },
@@ -193,7 +193,7 @@ async function renderizarLista(tipo) {
                         <p>${escaparHTML(config.descricao(item))}</p>
                     </div>
                     <div class="acoes-item">
-                        <button type="button" class="botao-itens" data-acao="editar" data-tipo="${tipo}" data-indice="${identificador}">Editar</button>
+                        <button type="button" class="botao-itens" data-acao="editar" data-tipo="${tipo}" data-indice="${identificador}"> Editar</button>
                         <button type="button" class="botao-itens botao-excluir" data-acao="excluir" data-tipo="${tipo}" data-indice="${identificador}">Excluir</button>
                     </div>
                 </div>
@@ -750,7 +750,16 @@ document.querySelectorAll('.item-barra-nav').forEach(item => {
         if (id === 'usuarios') {
             renderizarUsuarios();
         }
+        
     });
+});
+
+document.addEventListener('click', evento => {
+    const icone = evento.target.closest('.icone-notif');
+    if (!icone) return;
+
+    evento.preventDefault();
+    renderizarLista('alertas');
 });
 
 // Delegação de eventos: funciona também nos botões e formulários criados dinamicamente.
