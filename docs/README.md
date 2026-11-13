@@ -8,7 +8,7 @@ Integrantes:
 
 Guilherme Schroeder, Lucas Gabriel da Silva e Lukas Fischer Stolle
 
-Turma: T TDES 24/M6
+Turma: T TDES 2024/1 M6
 
 Professor: Ewerton Cercal
 
@@ -23,12 +23,12 @@ Professor: Ewerton Cercal
 2.2. Passo a passo da instalação
 
 1 - Baixe ou clone o repositório.  
-2 - Coloque a pasta do projeto dentro de "htdocs", na instalação do XAMPP.  
+2 - Abra a pasta do projeto dentro de "htdocs", na instalação do XAMPP.  
 3 - Abra o XAMPP e inicie o Apache e o MySQL.  
-4 - Acesse o phpMyAdmin pelo navegador.  
-5 - Crie o banco de dados trainpass.  
-6 - Importe o arquivo SQL disponibilizado na pasta do projeto.  
-7 - Configura as configurações de conexão com o banco de dados no arquivo de configuração.  
+4 - Acesse o phpMyAdmin pelo navegador. (localhost/phpmyadmin).
+5 - Importe o arquivo SQL disponibilizado na pasta do projeto (database/trainpass.sql).  
+6 - Execute o código SQL no phpMyAdmin para criar o banco.
+7 - Tenha certeza de que as conexões com o banco de dados estão sendo feitas corretamente pelos arquivos de conexão PHP. 
 8 - Acesse o sistema pelo navegador: http://localhost/SA_ferrorama/  
 
 3. Usuário de teste
@@ -38,9 +38,9 @@ Operador - | Login de teste | | Senha de teste |
 
 4. Telas
 
-4.1. Login e cadastro (permite o usuário criar uma conta ou logar em uma conta existente. Abaixo também é possível o usuário ter a função de recuperação de sua senha).  
+4.1. Login e cadastro (permite o usuário criar uma conta ou logar em uma conta existente. Abaixo também há uma função de recuperação de senha).  
 
-4.2. Painel principal (Dashboard, basicamente a tela principal que pode direcionar o usuário para o resto das telas do sistema).
+4.2. Painel principal (Dashboard, que permite que o usuário navegue pelas telas principais).
 
 4.3. Gerenciamento de trens (Cadastro, consulta e gerenciamento dos trens).
 
@@ -57,27 +57,23 @@ Operador - | Login de teste | | Senha de teste |
 5. Decisões tomadas e justificativas
 
 - Utilização de PHP, pois permite a comunicação entre o sistema e o banco de dados.
-- Utilização do MySQL, para armazenar os dados.
-- Criação de uma tela de login, para que o acesso ao sistema seja feito por usuários cadastrados.
-- Desenvolvimento de um layout responsivo em algumas telas, para que o sistema de adapte a diferentes tamanhos de tela
-- Utilização de uma identidade visual baseada em tons de azul, para transmitir uma aparência tecnológica e profissional.
-- Separação das funcionalidades em diferentes telas, para facilitar a navegação e evitar que muitas informações fiquem concentradas em uma única página.
-- Implementação de um sistema de alertas, para destacar possíveis problemas identificados durante o monitoramento ferroviário.
-- Desenvolvimento de uma tela de relatórios, para reunir informações importantes e facilitar o acompanhamento da operação ferroviária.
-- Separação dos arquivos CSS, JavaScript e PHP, para melhorar a organização do projeto.
-- Criação de uma tela de perfil, para permitir a visualização e alteração dos dados da conta.
+- Utilização do MySQL, para gerenciar o banco de dados.
+- Criação de uma tela de login, para que o acesso ao sistema seja feito apenas por usuários cadastrados.
+- Utilização de uma identidade visual baseada em tons de azul, para transmitir uma aparência tecnológica e profissional. Bem como uma fonte limpa e legível.
+- Navegação baseada em um dashboard principal dinâmico, para facilitar a navegação e evitar a criação de muitos arquivos separados.
+- Integração com uma API própria que disponibiliza os dados do banco em JSON para serem acessados pelo sistema. (Exemplo: Consulta de dados de trens na API: http://localhost/SA_ferrorama/api/trens.php)
 
-6. Limitações
+6. Limitações conhecidas
 
-- Relatórios de sensores não estão funcionando como desejado.
-- Falta design responsivo (adaptação para telas mobile) na maioria das telas.
-- Na tela de perfil tem um botao de "configurações" que não leva a lugar nenhum.
+- Relatórios de sensores não foram implementados por seguirem uma lógica diferente dos demais relatórios, exigindo mais trabalho. Até o momento não foi implementado por limitação de tempo.
+- Falta design responsivo (adaptação para telas mobile) na maioria das telas. Priorizamos a funcionalidade geral do sistema em desktop para não correr o risco de ficar sem tempo. Adicionaríamos responsividade se tivesse tempo.
+- Na tela de perfil há um botão de "configurações" que foi adicionado para implementação posterior, mas não conseguimos encontrar funcionalidade para ele, pois as configurações mais importantes já podem ser acessadas de outros modos. Decidimos manter o botão ali para não quebrar o padrão visual, apesar de que ele não leva para lugar nenhum.
 
 7. Registro de IA
 
-A inteligência artificial foi uma ferramenta de apoio durante a criação do TrainPass. Ela foi utilizada em alguns momentos para ajudar a desenvolver funcionalidades, melhorar partes do código, resolver problemas que apareceram e dar ideias para o projeto.
+A inteligência artificial foi uma ferramenta de apoio durante a criação do TrainPass. Ela foi para ajudar a desenvolver funcionalidades, melhorar partes do código, resolver problemas que apareceram e dar ideias para o projeto.
 
-Mesmo com essa ajuda, todas as alterações foram avaliadas pela equipe, que ficou responsável por escolher o que seria utilizado e garantir que o sistema funcionasse como esperado.
+Mesmo com auxílio da IA, todas as alterações foram avaliadas pela equipe, que ficou responsável por escolher o que seria utilizado e garantir que o sistema funcionasse como esperado. Nenhuma implementação foi feita pela IA sem que antes passasse por revisão e autorização prévia da equipe. Nós mantivemos backups seguros de versões funcionais em caso de alguma adição feita por IA dar errado.
 
 
 
